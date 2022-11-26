@@ -76,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       "https://media-exp1.licdn.com/dms/image/C5603AQHf-tyMIg6VdQ/profile-displayphoto-shrink_800_800/0/1644684573336?e=2147483647&v=beta&t=fBigrt6W2MFOghS9uEY3WaatzuQtmJnr3yY9dSxs4_Y",
                       height: 60,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 30,
                     ),
                     Center(
@@ -86,7 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             "Wavin Wagpal $index",
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
-                          Text(
+                          const Text(
                             "last message sent",
                             style: TextStyle(fontWeight: FontWeight.w400),
                           )
@@ -95,7 +95,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ],
                 ))),
-            separatorBuilder: (BuildContext context, int index) => Divider(
+            separatorBuilder: (BuildContext context, int index) =>
+                const Divider(
                   color: Colors.black,
                 ),
             itemCount: 5)
