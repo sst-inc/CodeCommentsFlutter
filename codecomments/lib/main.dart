@@ -118,6 +118,20 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: 300,
               ),
             ),
+          ),
+          SizedBox(
+            height: 30,
+          ),
+          Text(
+            "Username: (null)",
+            style: TextStyle(fontSize: 20),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Text(
+            "Email: (null)",
+            style: TextStyle(fontSize: 20),
           )
         ],
       ),
