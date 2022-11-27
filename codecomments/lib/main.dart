@@ -1,12 +1,12 @@
+import 'package:codecomments/themes.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({super.key});    
 
   // This widget is the root of your application.
   @override
@@ -19,19 +19,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-var theme = ThemeData(
-  useMaterial3: true,
-  colorScheme: ColorScheme.fromSeed(
-      seedColor: const Color(0xff1A3057), brightness: Brightness.light),
-);
-
-var darkTheme = ThemeData(
-  useMaterial3: true,
-  brightness: Brightness.dark,
-  colorScheme: ColorScheme.fromSeed(
-      seedColor: const Color(0xff1A3057), brightness: Brightness.dark),
-);
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
