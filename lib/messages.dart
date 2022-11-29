@@ -1,4 +1,4 @@
-import 'package:code_comments_alter/themes.dart';
+import 'package:code_comments_flutter/themes.dart';
 import 'package:flutter/material.dart';
 import 'chatMessageModel.dart';
 
@@ -26,8 +26,8 @@ class _ChatsInterfaceState extends State<ChatsInterface> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: theme,
-      darkTheme: darkTheme,
+      theme: lightTheme(context),
+      darkTheme: darkTheme(context),
       home: Scaffold(
         appBar: AppBar(
           title: Padding(
@@ -86,7 +86,7 @@ class _ChatsInterfaceState extends State<ChatsInterface> {
               child: Container(
                 padding: EdgeInsets.only(left: 10, bottom: 10, top: 10),
                 height: 60,
-                color: darkTheme.primaryColorDark,
+                // color: darkTheme.primaryColorDark,
                 width: double.infinity,
                 child: Row(
                   children: <Widget>[

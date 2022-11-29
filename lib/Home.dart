@@ -35,8 +35,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: theme,
-      darkTheme: darkTheme,
+      theme: lightTheme(context),
+      darkTheme: darkTheme(context),
       home: Scaffold(
         appBar: AppBar(
           title: _selectedIndex == 0
@@ -45,33 +45,31 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         body: _selectedIndex == 1 ? const ChatsPage() : const SettingsPage(),
         bottomNavigationBar: BottomNavigationBar(
+
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(
-                Icons.home,
-                color: Colors.grey,
+                Icons.home
               ),
               label: 'Home',
             ),
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.chat_bubble,
-                color: Colors.grey,
               ),
               label: 'Chats',
             ),
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.settings,
-                color: Colors.grey,
               ),
               label: 'Settings',
+
             ),
           ],
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,
           type: BottomNavigationBarType.shifting,
-          selectedItemColor: Colors.white,
         ),
       ),
     );

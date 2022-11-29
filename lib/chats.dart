@@ -1,4 +1,4 @@
-import 'package:code_comments_alter/messages.dart';
+import 'package:code_comments_flutter/messages.dart';
 import 'package:flutter/material.dart';
 
 class ChatsPage extends StatelessWidget {
