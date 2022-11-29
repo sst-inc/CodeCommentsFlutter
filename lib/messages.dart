@@ -1,0 +1,41 @@
+import 'package:code_comments_alter/themes.dart';
+import 'package:flutter/material.dart';
+
+class ChatsInterface extends StatefulWidget {
+  const ChatsInterface({super.key});
+
+  @override
+  State<ChatsInterface> createState() => _ChatsInterfaceState();
+}
+
+class _ChatsInterfaceState extends State<ChatsInterface> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: theme,
+      darkTheme: darkTheme,
+      home: Scaffold(
+        appBar: AppBar(
+            title: Padding(
+          padding: EdgeInsets.all(10),
+          child: Row(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Image.network(
+                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWsfakMpS0_MBEQWSK1zsZSK3nFqW2KhNnJYiySzQKLQ&s",
+                  height: 40,
+                ),
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              Text("Wavin Wagpal"),
+            ],
+          ),
+        )),
+        body: Column(),
+      ),
+    );
+  }
+}
