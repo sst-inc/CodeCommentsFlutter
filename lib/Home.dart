@@ -1,8 +1,12 @@
+import 'package:flutter/scheduler.dart';
+
 import 'themes.dart';
 import 'package:flutter/material.dart';
 
 import 'chats.dart';
 import 'settings.dart';
+
+var brightness = SchedulerBinding.instance.window.platformBrightness;
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -41,16 +45,15 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
           title: _selectedIndex == 0
               ? const Text("Home")
-              : (_selectedIndex == 1 ? const Text("Chats") : const Text("Settings")),
+              : (_selectedIndex == 1
+                  ? const Text("Chats")
+                  : const Text("Settings")),
         ),
         body: _selectedIndex == 1 ? const ChatsPage() : const SettingsPage(),
         bottomNavigationBar: BottomNavigationBar(
-
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home
-              ),
+              icon: Icon(Icons.home),
               label: 'Home',
             ),
             BottomNavigationBarItem(
@@ -64,12 +67,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 Icons.settings,
               ),
               label: 'Settings',
-
             ),
           ],
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,
           type: BottomNavigationBarType.shifting,
+          selectedItemColor: brightness == Brightness.dark
+              ? darkTheme(context).selectedRowColor
+              : lightTheme(context).selectedRowColor,
         ),
       ),
     );
