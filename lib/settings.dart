@@ -28,7 +28,7 @@ class SettingsPage extends StatelessWidget {
               ),
               Text(
                 "Username: (null)",
-                style: Theme.of(context).textTheme.bodyLarge,
+                style: TextStyle(fontSize: 20),
               ),
               SizedBox(
                 height: 10,
