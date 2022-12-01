@@ -3,9 +3,6 @@ import 'package:flutter/scheduler.dart';
 import 'themes.dart';
 import 'package:flutter/material.dart';
 
-import 'chats.dart';
-import 'settings.dart';
-
 var brightness = SchedulerBinding.instance.window.platformBrightness;
 
 class MyHomePage extends StatefulWidget {
