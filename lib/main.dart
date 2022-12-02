@@ -49,7 +49,7 @@ class _ScaffoldMaterialState extends State<ScaffoldMaterial> {
               : const Text("Settings")),
         ),
         body: _selectedIndex == 0
-            ? const MyHomePage()
+            ? MyHomePage()
             : (_selectedIndex == 1
             ? const ChatsPage()
             : const SettingsPage()),
