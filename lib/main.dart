@@ -44,15 +44,15 @@ class _ScaffoldMaterialState extends State<ScaffoldMaterial> {
         appBar: AppBar(
           title: _selectedIndex == 0
               ? const Text("Home")
-              : (_selectedIndex == 1
-              ? const Text("Chats")
-              : const Text("Settings")),
+              : ((_selectedIndex == 1
+                  ? const Text("Chats")
+                  : (_selectedIndex == 2
+                      ? const Text("Courses")
+                      : const Text("Settings")))),
         ),
         body: _selectedIndex == 0
             ? MyHomePage()
-            : (_selectedIndex == 1
-            ? const ChatsPage()
-            : const SettingsPage()),
+            : (_selectedIndex == 1 ? const ChatsPage() : const SettingsPage()),
         bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
@@ -65,6 +65,7 @@ class _ScaffoldMaterialState extends State<ScaffoldMaterial> {
               ),
               label: 'Chats',
             ),
+            BottomNavigationBarItem(icon: Icon(Icons.book), label: "Courses"),
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.settings,
