@@ -1,9 +1,9 @@
 import 'package:code_comments_flutter/chats.dart';
+import 'package:flutter/material.dart';
 
+import 'Home.dart';
 import 'settings.dart';
 import 'themes.dart';
-import 'package:flutter/material.dart';
-import 'Home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -45,14 +45,12 @@ class _ScaffoldMaterialState extends State<ScaffoldMaterial> {
           title: _selectedIndex == 0
               ? const Text("Home")
               : (_selectedIndex == 1
-              ? const Text("Chats")
-              : const Text("Settings")),
+                  ? const Text("Chats")
+                  : const Text("Settings")),
         ),
         body: _selectedIndex == 0
             ? const MyHomePage()
-            : (_selectedIndex == 1
-            ? const ChatsPage()
-            : const SettingsPage()),
+            : (_selectedIndex == 1 ? const ChatsPage() : const SettingsPage()),
         bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
@@ -75,9 +73,6 @@ class _ScaffoldMaterialState extends State<ScaffoldMaterial> {
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,
           type: BottomNavigationBarType.shifting,
-          selectedItemColor: brightness == Brightness.dark
-              ? darkTheme(context).selectedRowColor
-              : lightTheme(context).selectedRowColor,
         ),
       ),
     );
