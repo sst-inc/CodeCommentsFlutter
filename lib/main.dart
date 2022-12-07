@@ -1,4 +1,5 @@
 import 'package:code_comments_flutter/chats.dart';
+import 'package:code_comments_flutter/courses.dart';
 
 import 'settings.dart';
 import 'themes.dart';
@@ -51,8 +52,12 @@ class _ScaffoldMaterialState extends State<ScaffoldMaterial> {
                       : const Text("Settings")))),
         ),
         body: _selectedIndex == 0
-            ? MyHomePage()
-            : (_selectedIndex == 1 ? const ChatsPage() : const SettingsPage()),
+            ? const MyHomePage()
+            : (_selectedIndex == 1
+                ? const ChatsPage()
+                : (_selectedIndex == 2
+                    ? const CoursesPage()
+                    : const SettingsPage())),
         bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
