@@ -1,3 +1,4 @@
+import 'package:code_comments_flutter/coursedetails.dart';
 import 'package:flutter/material.dart';
 import 'messages.dart';
 import 'themes.dart';
@@ -19,7 +20,7 @@ class _CoursesPageState extends State<CoursesPage> {
           children: [
             Text(
               "Currently enrolled",
-              style: TextStyle(fontSize: 20),
+              style: TextStyle(fontSize: 25, fontWeight: FontWeight.w600),
             ),
             SizedBox(
               height: 20,
@@ -38,7 +39,7 @@ class _CoursesPageState extends State<CoursesPage> {
                                 child: Image.network(
                                   "https://w7.pngwing.com/pngs/595/79/png-transparent-dart-programming-language-flutter-object-oriented-programming-flutter-logo-class-fauna-bird.png",
                                   height: 50,
-                                  width: 50,
+                                  width: 30,
                                 ),
                               ),
                               const SizedBox(
@@ -64,7 +65,11 @@ class _CoursesPageState extends State<CoursesPage> {
                           ),
                         ),
                       ),
-                      onTap: () {},
+                      onTap: () {
+                        var navigator = Navigator.of(context);
+                        navigator.push(MaterialPageRoute(
+                            builder: (context) => CoursePage()));
+                      },
                     ),
                 separatorBuilder: (BuildContext context, int index) =>
                     const Divider(
