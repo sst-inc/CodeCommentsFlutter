@@ -55,6 +55,23 @@ class _LoginScreenState extends State<LoginScreen> {
                     labelText: "Password",
                   ),
                 ),
+                SizedBox(
+                  height: 10,
+                ),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        width: 50,
+                      ),
+                      Text("Log In"),
+                      SizedBox(
+                        width: 50,
+                      )
+                    ],
+                  ),
+                )
               ],
             ),
           ),
