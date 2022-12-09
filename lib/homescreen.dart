@@ -1,15 +1,40 @@
-import 'package:code_comments_flutter/coursedetails.dart';
-import 'package:code_comments_flutter/messages.dart';
+import 'package:flutter/scheduler.dart';
+
 import 'package:flutter/material.dart';
 
-class ChatsPage extends StatelessWidget {
-  const ChatsPage({super.key});
+import 'Messaging/messages.dart';
 
+var brightness = SchedulerBinding.instance.window.platformBrightness;
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
+        child: Padding(
+      padding: EdgeInsets.all(20),
       child: Column(
         children: [
+          SizedBox(
+            height: 150,
+          ),
+          Text(
+            "Calendar view",
+            style: TextStyle(fontSize: 18),
+          ),
+          SizedBox(
+            height: 150,
+          ),
+          Divider(
+            thickness: 1,
+            color: Colors.white,
+          ),
           ListView.separated(
               shrinkWrap: true,
               scrollDirection: Axis.vertical,
@@ -23,7 +48,7 @@ class ChatsPage extends StatelessWidget {
                               borderRadius: BorderRadius.circular(30),
                               child: Image.network(
                                 "https://media-exp1.licdn.com/dms/image/C5603AQHf-tyMIg6VdQ/profile-displayphoto-shrink_800_800/0/1644684573336?e=2147483647&v=beta&t=fBigrt6W2MFOghS9uEY3WaatzuQtmJnr3yY9dSxs4_Y",
-                                height: 60,
+                                height: 50,
                               ),
                             ),
                             const SizedBox(
@@ -59,10 +84,9 @@ class ChatsPage extends StatelessWidget {
                   const Divider(
                     color: Colors.black,
                   ),
-              itemCount: 5)
+              itemCount: 3),
         ],
       ),
-    );
-    ;
+    ));
   }
 }

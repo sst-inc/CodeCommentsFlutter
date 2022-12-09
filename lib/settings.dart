@@ -1,3 +1,5 @@
+import 'package:code_comments_flutter/devmenu.dart';
+import 'package:code_comments_flutter/login.dart';
 import 'package:flutter/material.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -15,7 +17,7 @@ class SettingsPage extends StatelessWidget {
               borderRadius: BorderRadius.circular(150),
               child: Image.network(
                 "https://media-exp1.licdn.com/dms/image/C5603AQHf-tyMIg6VdQ/profile-displayphoto-shrink_800_800/0/1644684573336?e=2147483647&v=beta&t=fBigrt6W2MFOghS9uEY3WaatzuQtmJnr3yY9dSxs4_Y",
-                height: 300,
+                height: 250,
               ),
             ),
           ),
@@ -65,6 +67,17 @@ class SettingsPage extends StatelessWidget {
             onPressed: () {},
             child: Text(
               "Edit details",
+              style: TextStyle(fontSize: 16),
+            ),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              var navigator = Navigator.of(context);
+              navigator
+                  .push(MaterialPageRoute(builder: (context) => DevMenu()));
+            },
+            child: Text(
+              "Show dev menu",
               style: TextStyle(fontSize: 16),
             ),
           )

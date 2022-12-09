@@ -1,40 +1,15 @@
-import 'package:flutter/scheduler.dart';
-
+import 'package:code_comments_flutter/Courses/coursedetails.dart';
+import 'package:code_comments_flutter/Messaging/messages.dart';
 import 'package:flutter/material.dart';
 
-import 'messages.dart';
+class ChatsPage extends StatelessWidget {
+  const ChatsPage({super.key});
 
-var brightness = SchedulerBinding.instance.window.platformBrightness;
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: Padding(
-      padding: EdgeInsets.all(20),
       child: Column(
         children: [
-          SizedBox(
-            height: 150,
-          ),
-          Text(
-            "Calendar view",
-            style: TextStyle(fontSize: 18),
-          ),
-          SizedBox(
-            height: 150,
-          ),
-          Divider(
-            thickness: 1,
-            color: Colors.white,
-          ),
           ListView.separated(
               shrinkWrap: true,
               scrollDirection: Axis.vertical,
@@ -48,7 +23,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               borderRadius: BorderRadius.circular(30),
                               child: Image.network(
                                 "https://media-exp1.licdn.com/dms/image/C5603AQHf-tyMIg6VdQ/profile-displayphoto-shrink_800_800/0/1644684573336?e=2147483647&v=beta&t=fBigrt6W2MFOghS9uEY3WaatzuQtmJnr3yY9dSxs4_Y",
-                                height: 50,
+                                height: 60,
                               ),
                             ),
                             const SizedBox(
@@ -84,9 +59,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   const Divider(
                     color: Colors.black,
                   ),
-              itemCount: 3),
+              itemCount: 5)
         ],
       ),
-    ));
+    );
+    ;
   }
 }

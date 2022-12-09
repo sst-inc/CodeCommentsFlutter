@@ -1,10 +1,11 @@
-import 'package:code_comments_flutter/chats.dart';
-import 'package:code_comments_flutter/courses.dart';
+import 'package:code_comments_flutter/Messaging/chats.dart';
+import 'package:code_comments_flutter/Courses/courses.dart';
+import 'package:code_comments_flutter/Calendar/scheduling.dart';
 
 import 'settings.dart';
 import 'themes.dart';
 import 'package:flutter/material.dart';
-import 'Home.dart';
+import 'homescreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -48,16 +49,20 @@ class _ScaffoldMaterialState extends State<ScaffoldMaterial> {
               : ((_selectedIndex == 1
                   ? const Text("Chats")
                   : (_selectedIndex == 2
-                      ? const Text("Courses")
-                      : const Text("Settings")))),
+                      ? const Text("Scheduling")
+                      : ((_selectedIndex == 3
+                          ? const Text("Courses")
+                          : const Text("Settings")))))),
         ),
         body: _selectedIndex == 0
             ? const MyHomePage()
             : (_selectedIndex == 1
                 ? const ChatsPage()
                 : (_selectedIndex == 2
-                    ? const CoursesPage()
-                    : const SettingsPage())),
+                    ? const schedulingView()
+                    : (_selectedIndex == 3
+                        ? const CoursesPage()
+                        : const SettingsPage()))),
         bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
@@ -70,7 +75,18 @@ class _ScaffoldMaterialState extends State<ScaffoldMaterial> {
               ),
               label: 'Chats',
             ),
-            BottomNavigationBarItem(icon: Icon(Icons.book), label: "Courses"),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.calendar_month,
+              ),
+              label: 'Scheduling',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.book,
+              ),
+              label: "Courses",
+            ),
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.settings,

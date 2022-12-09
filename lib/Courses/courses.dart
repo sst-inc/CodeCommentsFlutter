@@ -1,7 +1,7 @@
-import 'package:code_comments_flutter/coursedetails.dart';
+import 'package:code_comments_flutter/Courses/coursedetails.dart';
 import 'package:flutter/material.dart';
-import 'messages.dart';
-import 'themes.dart';
+import '../Messaging/messages.dart';
+import '../themes.dart';
 
 class CoursesPage extends StatefulWidget {
   const CoursesPage({super.key});
