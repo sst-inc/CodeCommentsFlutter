@@ -41,7 +41,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 TextField(
                   decoration: InputDecoration(
-                    border: OutlineInputBorder(),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20)),
                     labelText: "Username",
                   ),
                 ),
@@ -51,7 +52,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 TextField(
                   obscureText: true,
                   decoration: InputDecoration(
-                    border: OutlineInputBorder(),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20)),
                     labelText: "Password",
                   ),
                 ),
@@ -63,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Row(
                     children: [
                       SizedBox(
-                        width: 50,
+                        width: 140,
                       ),
                       Text("Log In"),
                       SizedBox(
