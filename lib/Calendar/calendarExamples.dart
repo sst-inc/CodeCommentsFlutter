@@ -1,9 +1,6 @@
 import 'dart:math';
 
 import 'package:flutter/scheduler.dart';
-
-import '../themes.dart';
-import 'package:flutter/material.dart';
 import 'package:manage_calendar_events/manage_calendar_events.dart';
 
 var brightness = SchedulerBinding.instance.window.platformBrightness;
@@ -84,7 +81,7 @@ var brightness = SchedulerBinding.instance.window.platformBrightness;
 //         },
 //       )
 
-Future<List<Calendar>?> _fetchCalendars(CalendarPlugin plugin) async {
+Future<List<Calendar>?> fetchCalendars(CalendarPlugin plugin) async {
   plugin.hasPermissions().then((value) {
     if (!value!) {
       plugin.requestPermissions();
@@ -94,12 +91,12 @@ Future<List<Calendar>?> _fetchCalendars(CalendarPlugin plugin) async {
   return plugin.getCalendars();
 }
 
-Future<List<CalendarEvent>?> _fetchEvents(
+Future<List<CalendarEvent>?> fetchEvents(
     CalendarPlugin plugin, dynamic calendarId) async {
   return plugin.getEvents(calendarId: calendarId);
 }
 
-Future<List<CalendarEvent>?> _fetchEventsByDateRange(CalendarPlugin plugin,
+Future<List<CalendarEvent>?> fetchEventsByDateRange(CalendarPlugin plugin,
     dynamic calendarId, DateTime startDate, DateTime endDate) async {
   return plugin.getEventsByDateRange(
     calendarId: calendarId,
@@ -108,7 +105,7 @@ Future<List<CalendarEvent>?> _fetchEventsByDateRange(CalendarPlugin plugin,
   );
 }
 
-void _addEvent(CalendarPlugin plugin, dynamic calendarId,
+void addEvent(CalendarPlugin plugin, dynamic calendarId,
     CalendarEvent calendarEvent, Function getEventId) async {
   DateTime startDate = DateTime.now();
   DateTime endDate = startDate.add(Duration(hours: 3));
@@ -119,7 +116,7 @@ void _addEvent(CalendarPlugin plugin, dynamic calendarId,
   });
 }
 
-void _deleteEvent(CalendarPlugin plugin, dynamic calendarId, String eventId,
+void deleteEvent(CalendarPlugin plugin, dynamic calendarId, String eventId,
     Function checkIfDeleted) async {
   plugin
       .deleteEvent(calendarId: calendarId, eventId: eventId)
@@ -128,8 +125,8 @@ void _deleteEvent(CalendarPlugin plugin, dynamic calendarId, String eventId,
   });
 }
 
-void _updateEvent(CalendarPlugin plugin, dynamic calendarId,
-    CalendarEvent event, Function getEventId) async {
+void updateEvent(CalendarPlugin plugin, dynamic calendarId, CalendarEvent event,
+    Function getEventId) async {
   event.title = 'Updated from Event';
   event.description = 'Test description is updated now';
   event.attendees = Attendees(
@@ -142,34 +139,34 @@ void _updateEvent(CalendarPlugin plugin, dynamic calendarId,
   });
 
   if (event.hasAlarm!) {
-    _updateReminder(plugin, calendarId, event.eventId!, 65);
+    updateReminder(plugin, calendarId, event.eventId!, 65);
   } else {
-    _addReminder(plugin, calendarId, event.eventId!, -30);
+    addReminder(plugin, calendarId, event.eventId!, -30);
   }
 }
 
-void _addReminder(CalendarPlugin plugin, dynamic calendarId, String eventId,
+void addReminder(CalendarPlugin plugin, dynamic calendarId, String eventId,
     int minutes) async {
   plugin.addReminder(
       calendarId: calendarId, eventId: eventId, minutes: minutes);
 }
 
-void _updateReminder(CalendarPlugin plugin, dynamic calendarId, String eventId,
+void updateReminder(CalendarPlugin plugin, dynamic calendarId, String eventId,
     int minutes) async {
   plugin.updateReminder(
       calendarId: calendarId, eventId: eventId, minutes: minutes);
 }
 
-void _deleteReminder(CalendarPlugin plugin, String eventId) async {
+void deleteReminder(CalendarPlugin plugin, String eventId) async {
   plugin.deleteReminder(eventId: eventId);
 }
 
-Future<List<Attendee>?> _getAttendees(
+Future<List<Attendee>?> getAttendees(
     CalendarPlugin plugin, String eventId) async {
   return await plugin.getAttendees(eventId: eventId);
 }
 
-_addAttendee(CalendarPlugin plugin, String eventId) async {
+addAttendee(CalendarPlugin plugin, String eventId) async {
   var number = Random().nextInt(100);
   var newAttendee = Attendee(
       emailAddress: 'attendee$number@gmail.com', name: 'Attendee$number');

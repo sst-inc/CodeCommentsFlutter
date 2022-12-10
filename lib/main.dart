@@ -1,11 +1,11 @@
-import 'package:code_comments_flutter/Messaging/chats.dart';
-import 'package:code_comments_flutter/Courses/courses.dart';
 import 'package:code_comments_flutter/Calendar/scheduling.dart';
+import 'package:code_comments_flutter/Courses/courses.dart';
+import 'package:code_comments_flutter/Messaging/chats.dart';
+import 'package:flutter/material.dart';
 
+import 'homescreen.dart';
 import 'settings.dart';
 import 'themes.dart';
-import 'package:flutter/material.dart';
-import 'homescreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -97,9 +97,6 @@ class _ScaffoldMaterialState extends State<ScaffoldMaterial> {
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,
           type: BottomNavigationBarType.shifting,
-          selectedItemColor: brightness == Brightness.dark
-              ? darkTheme(context).selectedRowColor
-              : lightTheme(context).selectedRowColor,
         ),
       ),
     );
