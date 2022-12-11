@@ -1,10 +1,11 @@
 import 'package:code_comments_flutter/Calendar/scheduling.dart';
 import 'package:code_comments_flutter/Courses/courses.dart';
 import 'package:code_comments_flutter/Messaging/chats.dart';
+import 'package:code_comments_flutter/settings.dart';
 import 'package:flutter/material.dart';
 
+import 'Miscellaneous/HamburgerMenu.dart';
 import 'homescreen.dart';
-import 'settings.dart';
 import 'themes.dart';
 
 void main() {
@@ -30,10 +31,19 @@ class ScaffoldMaterial extends StatefulWidget {
 
 class _ScaffoldMaterialState extends State<ScaffoldMaterial> {
   int _selectedIndex = 0;
+  List<String> listOfTitles = [
+    "Home",
+    "Chats",
+    "Scheduling",
+    "Courses",
+    "Settings"
+  ];
+  String title = "Home";
 
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
+      title = listOfTitles[_selectedIndex];
     });
   }
 
@@ -42,50 +52,32 @@ class _ScaffoldMaterialState extends State<ScaffoldMaterial> {
     return MaterialApp(
       theme: lightTheme(context),
       darkTheme: darkTheme(context),
-      home: Scaffold(
-        body: _selectedIndex == 0
-            ? const MyHomePage()
-            : (_selectedIndex == 1
-                ? const ChatsPage()
-                : (_selectedIndex == 2
-                    ? const SchedulingView()
-                    : (_selectedIndex == 3
-                        ? const CoursesPage()
-                        : const SettingsPage()))),
-        bottomNavigationBar: BottomNavigationBar(
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.chat_bubble,
-              ),
-              label: 'Chats',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.calendar_month,
-              ),
-              label: 'Scheduling',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.book,
-              ),
-              label: "Courses",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.settings,
-              ),
-              label: 'Settings',
-            ),
-          ],
-          currentIndex: _selectedIndex,
-          onTap: _onItemTapped,
-          type: BottomNavigationBarType.shifting,
+      home: DefaultTabController(
+        length: 5,
+        child: Scaffold(
+          drawer: DrawerActions(),
+          appBar: AppBar(
+              title: Text(title),
+              centerTitle: false,
+              bottom: TabBar(
+                tabs: <Tab>[
+                  Tab(icon: Icon(Icons.home)),
+                  Tab(icon: Icon(Icons.messenger)),
+                  Tab(icon: Icon(Icons.calendar_month)),
+                  Tab(icon: Icon(Icons.book)),
+                  Tab(icon: Icon(Icons.settings)),
+                ],
+                onTap: _onItemTapped,
+              )),
+          body: TabBarView(
+            children: [
+              MyHomePage(),
+              ChatsPage(),
+              SchedulingView(),
+              CoursesPage(),
+              SettingsPage(),
+            ],
+          ),
         ),
       ),
     );

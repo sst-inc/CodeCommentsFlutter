@@ -40,7 +40,6 @@ class _SchedulingViewState extends State<SchedulingView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Scheduling"), centerTitle: false),
       drawer: DrawerActions(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

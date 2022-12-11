@@ -15,7 +15,6 @@ class _CoursesPageState extends State<CoursesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Courses"), centerTitle: false),
       drawer: DrawerActions(),
       body: SafeArea(
         child: Padding(

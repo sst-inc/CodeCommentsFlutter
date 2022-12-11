@@ -13,10 +13,8 @@ class ChatsPage extends StatefulWidget {
 
 class _ChatsPageState extends State<ChatsPage> {
   @override
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Chats"), centerTitle: false),
       drawer: DrawerActions(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
