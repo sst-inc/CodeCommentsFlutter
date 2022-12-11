@@ -10,19 +10,22 @@ class schedulingView extends StatefulWidget {
 class _schedulingViewState extends State<schedulingView> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Padding(
-        padding: EdgeInsets.all(20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Center(
-              child: Text(
-                "Calendar view",
-                style: TextStyle(fontSize: 20),
-              ),
-            )
-          ],
+    return Scaffold(
+      appBar: AppBar(title: Text("Scheduling")),
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.all(20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Center(
+                child: Text(
+                  "Calendar view",
+                  style: TextStyle(fontSize: 20),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

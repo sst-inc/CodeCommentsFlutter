@@ -37,74 +37,77 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Padding(
-      padding: const EdgeInsets.only(right: 10, left: 10, bottom: 10, top: 0),
-      child: Column(
-        children: [
-          TableCalendar(
-            calendarStyle: const CalendarStyle(
-              isTodayHighlighted: true,
+    return Scaffold(
+      appBar: AppBar(title: Text("Home")),
+      body: SafeArea(
+          child: Padding(
+        padding: const EdgeInsets.only(right: 10, left: 10, bottom: 10, top: 0),
+        child: Column(
+          children: [
+            TableCalendar(
+              calendarStyle: const CalendarStyle(
+                isTodayHighlighted: true,
+              ),
+              headerStyle: const HeaderStyle(
+                  formatButtonVisible: false, titleCentered: true),
+              calendarFormat: CalendarFormat.week,
+              firstDay: DateTime(DateTime.now().year - 10),
+              lastDay: DateTime(DateTime.now().year + 10),
+              focusedDay: DateTime.now(),
+              selectedDayPredicate: (day) {
+                return isSameDay(selectedCalViewDay, day);
+              },
+              onDaySelected: (selected, focused) {
+                setState(() {
+                  selectedCalViewDay = selected;
+                  focusedCalViewDay = focused;
+                  getCals(selected);
+                });
+              },
             ),
-            headerStyle: const HeaderStyle(
-                formatButtonVisible: false, titleCentered: true),
-            calendarFormat: CalendarFormat.week,
-            firstDay: DateTime(DateTime.now().year - 10),
-            lastDay: DateTime(DateTime.now().year + 10),
-            focusedDay: DateTime.now(),
-            selectedDayPredicate: (day) {
-              return isSameDay(selectedCalViewDay, day);
-            },
-            onDaySelected: (selected, focused) {
-              setState(() {
-                selectedCalViewDay = selected;
-                focusedCalViewDay = focused;
-                getCals(selected);
-              });
-            },
-          ),
-          Flexible(
-            flex: 1,
-            fit: FlexFit.tight,
-            child: areCalendarsLoaded == 0
-                ? const Center(child: CircularProgressIndicator())
-                : SingleChildScrollView(
-                    child: Column(
-                    children: listOfCardWidgets.isEmpty
-                        // TODO: Need to implement view to tell users that there is nothing in their calendars
-                        ? [
-                            const Center(
-                                child: Text(
-                                    "There seems to be nothing in your calendar today as of now"))
-                          ]
-                        : [...listOfCardWidgets],
-                  )),
-          ),
-          Divider(
-            thickness: 1,
-            color: brightness == Brightness.dark
-                ? Color.fromRGBO(104, 102, 102, 1.0)
-                : Color.fromRGBO(77, 75, 75, 1.0),
-          ),
-          Flexible(
-            flex: 2,
-            fit: FlexFit.tight,
-            child: ListView.builder(
-                shrinkWrap: false,
-                scrollDirection: Axis.vertical,
-                itemBuilder: (BuildContext context, int index) => InkWell(
-                      child: Card(child: chatsDataView(index)),
-                      onTap: () {
-                        var navigator = Navigator.of(context);
-                        navigator.push(MaterialPageRoute(
-                            builder: (context) => const ChatsInterface()));
-                      },
-                    ),
-                itemCount: 3),
-          ),
-        ],
-      ),
-    ));
+            Flexible(
+              flex: 1,
+              fit: FlexFit.tight,
+              child: areCalendarsLoaded == 0
+                  ? const Center(child: CircularProgressIndicator())
+                  : SingleChildScrollView(
+                      child: Column(
+                      children: listOfCardWidgets.isEmpty
+                          // TODO: Need to implement view to tell users that there is nothing in their calendars
+                          ? [
+                              const Center(
+                                  child: Text(
+                                      "There seems to be nothing in your calendar today as of now"))
+                            ]
+                          : [...listOfCardWidgets],
+                    )),
+            ),
+            Divider(
+              thickness: 1,
+              color: brightness == Brightness.dark
+                  ? Color.fromRGBO(104, 102, 102, 1.0)
+                  : Color.fromRGBO(77, 75, 75, 1.0),
+            ),
+            Flexible(
+              flex: 2,
+              fit: FlexFit.tight,
+              child: ListView.builder(
+                  shrinkWrap: false,
+                  scrollDirection: Axis.vertical,
+                  itemBuilder: (BuildContext context, int index) => InkWell(
+                        child: Card(child: chatsDataView(index)),
+                        onTap: () {
+                          var navigator = Navigator.of(context);
+                          navigator.push(MaterialPageRoute(
+                              builder: (context) => const ChatsInterface()));
+                        },
+                      ),
+                  itemCount: 3),
+            ),
+          ],
+        ),
+      )),
+    );
   }
 
   Widget chatsDataView(int index) {

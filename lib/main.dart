@@ -43,17 +43,6 @@ class _ScaffoldMaterialState extends State<ScaffoldMaterial> {
       theme: lightTheme(context),
       darkTheme: darkTheme(context),
       home: Scaffold(
-        appBar: AppBar(
-          title: _selectedIndex == 0
-              ? const Text("Home")
-              : ((_selectedIndex == 1
-                  ? const Text("Chats")
-                  : (_selectedIndex == 2
-                      ? const Text("Scheduling")
-                      : ((_selectedIndex == 3
-                          ? const Text("Courses")
-                          : const Text("Settings")))))),
-        ),
         body: _selectedIndex == 0
             ? const MyHomePage()
             : (_selectedIndex == 1
