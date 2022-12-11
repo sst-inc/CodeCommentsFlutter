@@ -3,10 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:intl/intl.dart';
 import 'package:manage_calendar_events/manage_calendar_events.dart';
+import 'package:table_calendar/table_calendar.dart';
 
 import 'Messaging/messages.dart';
-
-var brightness = SchedulerBinding.instance.window.platformBrightness;
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -17,46 +16,75 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   CalendarPlugin plugin = CalendarPlugin();
-  bool areCalendarsLoaded = false;
+
+  // Have to do with obtaining all user events frm calendar
+  int areCalendarsLoaded = 0;
   List<CalendarEvent> listOfEvents = [];
   List<Widget> listOfCardWidgets = [];
+  bool lockHeld = false;
+
+  DateTime selectedCalViewDay = DateTime.now();
+  DateTime focusedCalViewDay = DateTime.now();
+
+  Brightness brightness = SchedulerBinding.instance.window.platformBrightness;
 
   @override
   void initState() {
     super.initState();
+    areCalendarsLoaded = 0;
     getCals();
   }
 
   @override
   Widget build(BuildContext context) {
-    double chatCardsHeight = MediaQuery.of(context).size.height / 2;
-    double chatCardsWidth = MediaQuery.of(context).size.width / 2;
-
     return SafeArea(
         child: Padding(
-      padding: const EdgeInsets.all(10),
+      padding: const EdgeInsets.only(right: 10, left: 10, bottom: 10, top: 0),
       child: Column(
         children: [
+          TableCalendar(
+            calendarStyle: const CalendarStyle(
+              isTodayHighlighted: true,
+            ),
+            headerStyle: const HeaderStyle(
+                formatButtonVisible: false, titleCentered: true),
+            calendarFormat: CalendarFormat.week,
+            firstDay: DateTime(DateTime.now().year - 10),
+            lastDay: DateTime(DateTime.now().year + 10),
+            focusedDay: DateTime.now(),
+            selectedDayPredicate: (day) {
+              return isSameDay(selectedCalViewDay, day);
+            },
+            onDaySelected: (selected, focused) {
+              setState(() {
+                selectedCalViewDay = selected;
+                focusedCalViewDay = focused;
+                getCals(selected);
+              });
+            },
+          ),
           Flexible(
             flex: 1,
             fit: FlexFit.tight,
-            child: areCalendarsLoaded != true
+            child: areCalendarsLoaded == 0
                 ? const Center(child: CircularProgressIndicator())
                 : SingleChildScrollView(
                     child: Column(
                     children: listOfCardWidgets.isEmpty
                         // TODO: Need to implement view to tell users that there is nothing in their calendars
                         ? [
-                            Center(
+                            const Center(
                                 child: Text(
-                                    "There seems to be nothing in your calendar as of now"))
+                                    "There seems to be nothing in your calendar today as of now"))
                           ]
                         : [...listOfCardWidgets],
                   )),
           ),
-          const Divider(
+          Divider(
             thickness: 1,
-            color: Colors.white,
+            color: brightness == Brightness.dark
+                ? Color.fromRGBO(104, 102, 102, 1.0)
+                : Color.fromRGBO(77, 75, 75, 1.0),
           ),
           Flexible(
             flex: 2,
@@ -65,7 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 shrinkWrap: false,
                 scrollDirection: Axis.vertical,
                 itemBuilder: (BuildContext context, int index) => InkWell(
-                      child: Card(child: ChatsDataView(index)),
+                      child: Card(child: chatsDataView(index)),
                       onTap: () {
                         var navigator = Navigator.of(context);
                         navigator.push(MaterialPageRoute(
@@ -79,9 +107,9 @@ class _MyHomePageState extends State<MyHomePage> {
     ));
   }
 
-  Widget ChatsDataView(int index) {
+  Widget chatsDataView(int index) {
     return Padding(
-      padding: EdgeInsets.all(5),
+      padding: const EdgeInsets.all(5),
       child: ListTile(
           title: Row(
         children: [
@@ -125,75 +153,54 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           )
         ],
-      )
-
-          // Row(
-          //   children: [
-          //     Padding(
-          //       padding: EdgeInsets.only(right: 10),
-          //       child: ClipRRect(
-          //         borderRadius: BorderRadius.circular(30),
-          //         child: Image.network(
-          //           "https://media-exp1.licdn.com/dms/image/C5603AQHf-tyMIg6VdQ/profile-displayphoto-shrink_800_800/0/1644684573336?e=2147483647&v=beta&t=fBigrt6W2MFOghS9uEY3WaatzuQtmJnr3yY9dSxs4_Y",
-          //           height: 50,
-          //         ),
-          //       ),
-          //     ),
-          //     Column(
-          //       children: [
-          //         Text(
-          //           "Wavin Wagpal $index",
-          //           style: const TextStyle(fontWeight: FontWeight.bold),
-          //         ),
-          //         const Text(
-          //           "last message sent",
-          //           style: TextStyle(fontWeight: FontWeight.w400),
-          //         )
-          //       ],
-          //     ),
-          //   ],
-          // ),
-          ),
+      )),
     );
   }
 
-  void getCals() {
-    fetchCalendars(plugin).whenComplete(() {
-      // setState(() {
-      //   // areCalendarsLoaded = true;
-      //   print("loaded");
-      // });
-    }).then((value) {
-      print(value![0].name);
-      for (Calendar i in value) {
-        fetchEvents(plugin, i.id).then((value) {
-          for (CalendarEvent k in value!) {
-            if (k.startDate!.year == DateTime.now().year &&
-                k.startDate!.month == DateTime.now().month &&
-                k.startDate!.day == DateTime.now().day) {
-              listOfEvents.add(k);
+  void getCals([DateTime? date]) {
+    List<CalendarEvent> tempCalEvents = [];
+
+    if (!lockHeld) {
+      lockHeld = true;
+      date = date ?? DateTime.now();
+      fetchCalendars(plugin).whenComplete(() {
+        lockHeld = false;
+      }).then((value) {
+        for (Calendar i in value!) {
+          fetchEvents(plugin, i.id).then((value) {
+            for (CalendarEvent k in value!) {
+              if (k.startDate!.year == date!.year &&
+                  k.startDate!.month == date.month &&
+                  k.startDate!.day == date.day) {
+                tempCalEvents.add(k);
+              }
             }
-          }
 
-          listOfCardWidgets.clear();
+            listOfCardWidgets.clear();
 
-          for (CalendarEvent k in listOfEvents) {
-            listOfCardWidgets.add(Card(
-              child: ListTile(
-                title: Text(k.title!),
-                trailing:
-                    Text(DateFormat("dd/MM/yyyy HH:mm").format(k.startDate!)),
-              ),
-            ));
-          }
-          ;
+            for (CalendarEvent k in tempCalEvents) {
+              listOfCardWidgets.add(Card(
+                child: Padding(
+                  padding: EdgeInsets.all(5),
+                  child: ListTile(
+                    title: Text(k.title!),
+                    trailing: k.isAllDay!
+                        ? Text(
+                            "${DateFormat("dd/MM/yyyy ").format(k.startDate!)}(Whole Day)")
+                        : Text(DateFormat("dd/MM/yyyy HH:mm")
+                            .format(k.startDate!)),
+                  ),
+                ),
+              ));
+            }
 
-          print(listOfCardWidgets);
-        });
-      }
-      setState(() {
-        areCalendarsLoaded = true;
+            setState(() {
+              areCalendarsLoaded += 1;
+            });
+            listOfEvents = tempCalEvents;
+          });
+        }
       });
-    });
+    }
   }
 }
