@@ -78,18 +78,21 @@ class _MyHomePageState extends State<MyHomePage> {
                     : listOfCardWidgets.isEmpty && areCalendarsLoaded != 0
                         // TODO: Need to implement view to tell users that there is nothing in their calendars
                         ? Center(
-                            child: Column(children: const [
-                            Text(
-                              "Hm.",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(fontSize: 35),
-                            ),
-                            Text(
-                              "There seems to be nothing in your calendar today as of now",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(fontSize: 20),
-                            ),
-                          ]))
+                            child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: const [
+                                Text(
+                                  "Hm.",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(fontSize: 35),
+                                ),
+                                Text(
+                                  "There seems to be nothing in your calendar today as of now",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(fontSize: 20),
+                                ),
+                              ]))
                         : SingleChildScrollView(
                             child: Column(children: [...listOfCardWidgets!])),
               ),
