@@ -16,6 +16,8 @@ class _SettingsPageState extends State<SettingsPage> {
   String email = "person@gmail.com";
   String occupation = "Programmer";
   String bio = "hi";
+
+  // TODO: allow this to be a list instead of a String
   String taughtLangs = "Py";
 
   String _tempBio = "";
@@ -106,6 +108,7 @@ class _SettingsPageState extends State<SettingsPage> {
               const Divider(),
               !enteredEditMode
                   ? Column(children: [
+                      // TODO: find a better way to display all of these without looking ugly
                       Padding(
                         padding: EdgeInsets.only(top: 10),
                         child: Text(

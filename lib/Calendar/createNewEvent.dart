@@ -21,6 +21,7 @@ class _CreateNewCalendarEventState extends State<CreateNewCalendarEvent> {
             padding: const EdgeInsets.all(10),
             child: Column(
               children: const [
+                // TODO: Finish the rest of the functionality
                 Padding(
                   padding: EdgeInsets.only(bottom: 10),
                   child: TextField(
