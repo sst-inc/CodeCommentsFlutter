@@ -48,7 +48,7 @@ class _ScaffoldMaterialState extends State<ScaffoldMaterial> {
             : (_selectedIndex == 1
                 ? const ChatsPage()
                 : (_selectedIndex == 2
-                    ? const schedulingView()
+                    ? const SchedulingView()
                     : (_selectedIndex == 3
                         ? const CoursesPage()
                         : const SettingsPage()))),
