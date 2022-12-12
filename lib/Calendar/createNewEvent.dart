@@ -8,16 +8,35 @@ class CreateNewCalendarEvent extends StatefulWidget {
 }
 
 class _CreateNewCalendarEventState extends State<CreateNewCalendarEvent> {
+  String newCalendarEventName = "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Create Calendar Event"),
-      ),
-      body: Container(
-        height: MediaQuery.of(context).size.height / 1.5,
-      ),
-    );
-    ;
+        appBar: AppBar(
+          title: const Text("Create Calendar Event"),
+        ),
+        body: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: Column(
+              children: const [
+                Padding(
+                  padding: EdgeInsets.only(bottom: 10),
+                  child: TextField(
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: "Calendar Event Name"),
+                  ),
+                ),
+                TextField(
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: "Location or Video Call (if any)"),
+                ),
+              ],
+            ),
+          ),
+        ));
   }
 }
