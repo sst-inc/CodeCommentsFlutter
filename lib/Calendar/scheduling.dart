@@ -1,4 +1,5 @@
 import 'package:code_comments_flutter/Calendar/calendarExamples.dart';
+import 'package:code_comments_flutter/Calendar/createNewEvent.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:intl/intl.dart';
@@ -40,19 +41,23 @@ class _SchedulingViewState extends State<SchedulingView> {
       appBar: AppBar(title: Text("Scheduling")),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          showModalBottomSheet(
-            context: context,
-            builder: (context) {
-              return Scaffold(
-                appBar: AppBar(
-                  title: Text("Create Calendar Event"),
-                ),
-                body: Container(
-                  height: MediaQuery.of(context).size.height / 1.5,
-                ),
-              );
-            },
-          );
+          // showModalBottomSheet(
+          //   context: context,
+          //   builder: (context) {
+          //     return Scaffold(
+          //       appBar: AppBar(
+          //         title: Text("Create Calendar Event"),
+          //       ),
+          //       body: Container(
+          //         height: MediaQuery.of(context).size.height / 1.5,
+          //       ),
+          //     );
+          //   },
+          // );
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => CreateNewCalendarEvent()));
         },
         backgroundColor: Theme.of(context).primaryColor,
         child: const Icon(Icons.add),
