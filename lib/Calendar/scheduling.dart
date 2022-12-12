@@ -23,6 +23,7 @@ class _SchedulingViewState extends State<SchedulingView> {
 
   DateTime selectedCalViewDay = DateTime.now();
   DateTime focusedCalViewDay = DateTime.now();
+  CalendarFormat _calendarFormat = CalendarFormat.month;
 
   Brightness brightness = SchedulerBinding.instance.window.platformBrightness;
 
@@ -38,9 +39,23 @@ class _SchedulingViewState extends State<SchedulingView> {
     return Scaffold(
       appBar: AppBar(title: Text("Scheduling")),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: Icon(Icons.add),
-        shape: CircleBorder(),
+        onPressed: () {
+          showModalBottomSheet(
+            context: context,
+            builder: (context) {
+              return Scaffold(
+                appBar: AppBar(
+                  title: Text("Create Calendar Event"),
+                ),
+                body: Container(
+                  height: MediaQuery.of(context).size.height / 1.5,
+                ),
+              );
+            },
+          );
+        },
+        backgroundColor: Theme.of(context).primaryColor,
+        child: const Icon(Icons.add),
       ),
       body: SafeArea(
         child: Padding(
@@ -52,9 +67,14 @@ class _SchedulingViewState extends State<SchedulingView> {
                 calendarStyle: const CalendarStyle(
                   isTodayHighlighted: true,
                 ),
-                headerStyle: const HeaderStyle(
-                    formatButtonVisible: false, titleCentered: true),
-                calendarFormat: CalendarFormat.week,
+                // headerStyle: const HeaderStyle(
+                //     formatButtonVisible: false, titleCentered: true),
+                calendarFormat: _calendarFormat,
+                onFormatChanged: (format) {
+                  setState(() {
+                    _calendarFormat = format;
+                  });
+                },
                 firstDay: DateTime(DateTime.now().year - 10),
                 lastDay: DateTime(DateTime.now().year + 10),
                 focusedDay: DateTime.now(),
@@ -71,23 +91,29 @@ class _SchedulingViewState extends State<SchedulingView> {
                   );
                 },
               ),
-              Flexible(
-                flex: 1,
-                fit: FlexFit.tight,
+              Expanded(
                 child: areCalendarsLoaded == 0
                     ? const Center(child: CircularProgressIndicator())
-                    : SingleChildScrollView(
-                        child: Column(
-                          children: listOfCardWidgets.isEmpty
-                              // TODO: Need to implement view to tell users that there is nothing in their calendars
-                              ? [
-                                  const Center(
-                                      child: Text(
-                                          "There seems to be nothing in your calendar today as of now"))
-                                ]
-                              : [...listOfCardWidgets],
-                        ),
-                      ),
+                    : listOfCardWidgets.isEmpty && areCalendarsLoaded != 0
+                        // TODO: Need to implement view to tell users that there is nothing in their calendars
+                        ? Center(
+                            child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: const [
+                                Text(
+                                  "Hm.",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(fontSize: 35),
+                                ),
+                                Text(
+                                  "There seems to be nothing in your calendar today as of now",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(fontSize: 20),
+                                ),
+                              ]))
+                        : SingleChildScrollView(
+                            child: Column(children: [...listOfCardWidgets!])),
               ),
             ],
           ),
