@@ -1,4 +1,5 @@
 import 'package:code_comments_flutter/Messaging/messages.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ChatsPage extends StatelessWidget {
@@ -52,7 +53,7 @@ class ChatsPage extends StatelessWidget {
                       ),
                       onTap: () {
                         var navigator = Navigator.of(context);
-                        navigator.push(MaterialPageRoute(
+                        navigator.push(CupertinoPageRoute(
                             builder: (context) => ChatsInterface()));
                       },
                     ),

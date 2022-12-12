@@ -1,5 +1,6 @@
-import 'package:code_comments_flutter/login.dart';
+import 'package:code_comments_flutter/Login/login.dart';
 import 'package:code_comments_flutter/themes.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class DevMenu extends StatefulWidget {
@@ -34,7 +35,7 @@ class _DevMenuState extends State<DevMenu> {
                 ElevatedButton(
                     onPressed: () {
                       var navigator = Navigator.of(context);
-                      navigator.push(MaterialPageRoute(
+                      navigator.push(CupertinoPageRoute(
                           builder: (context) => LoginScreen()));
                     },
                     child: Text("Login screen"))

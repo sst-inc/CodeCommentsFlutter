@@ -81,44 +81,52 @@ class _ChatsInterfaceState extends State<ChatsInterface> {
                 );
               },
             ),
-            Align(
-              alignment: Alignment.bottomLeft,
-              child: Container(
-                padding: EdgeInsets.only(left: 10, bottom: 10, top: 10),
-                height: 60,
-                // color: darkTheme.primaryColorDark,
-                width: double.infinity,
-                child: Row(
-                  children: <Widget>[
-                    ElevatedButton.icon(
-                        onPressed: () {},
-                        icon: Icon(Icons.add),
-                        label: Text("Add")),
-                    SizedBox(
-                      width: 15,
-                    ),
-                    Expanded(
-                      child: TextField(
-                        decoration: InputDecoration(
-                          hintText: "Write message...",
-                          border: InputBorder.none,
+            Column(
+              children: [
+                Spacer(),
+                Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Container(
+                    padding: EdgeInsets.only(left: 10, bottom: 10, top: 10),
+                    height: 60,
+                    // color: darkTheme.primaryColorDark,
+                    width: double.infinity,
+                    child: Row(
+                      children: <Widget>[
+                        ElevatedButton.icon(
+                            onPressed: () {},
+                            icon: Icon(Icons.add),
+                            label: Text("Add")),
+                        SizedBox(
+                          width: 15,
                         ),
-                      ),
+                        Expanded(
+                          child: TextField(
+                            decoration: InputDecoration(
+                              hintText: "Write message...",
+                              border: InputBorder.none,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        ElevatedButton(
+                          onPressed: () {},
+                          child: Icon(Icons.send),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        )
+                      ],
                     ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    ElevatedButton(
-                      onPressed: () {},
-                      child: Icon(Icons.send),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    )
-                  ],
+                  ),
                 ),
-              ),
-            ),
+                SizedBox(
+                  height: 10,
+                )
+              ],
+            )
           ],
         ),
       ),

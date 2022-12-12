@@ -1,4 +1,5 @@
 import 'package:code_comments_flutter/devmenu.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -75,7 +76,7 @@ class SettingsPage extends StatelessWidget {
               onPressed: () {
                 var navigator = Navigator.of(context);
                 navigator
-                    .push(MaterialPageRoute(builder: (context) => DevMenu()));
+                    .push(CupertinoPageRoute(builder: (context) => DevMenu()));
               },
               child: Text(
                 "Show dev menu",

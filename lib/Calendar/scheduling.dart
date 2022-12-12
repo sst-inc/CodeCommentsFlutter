@@ -37,6 +37,11 @@ class _SchedulingViewState extends State<SchedulingView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Scheduling")),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.add),
+        shape: CircleBorder(),
+      ),
       body: SafeArea(
         child: Padding(
           padding:
@@ -83,12 +88,6 @@ class _SchedulingViewState extends State<SchedulingView> {
                               : [...listOfCardWidgets],
                         ),
                       ),
-              ),
-              Divider(
-                thickness: 1,
-                color: brightness == Brightness.dark
-                    ? Color.fromRGBO(104, 102, 102, 1.0)
-                    : Color.fromRGBO(77, 75, 75, 1.0),
               ),
             ],
           ),

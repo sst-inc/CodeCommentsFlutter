@@ -1,4 +1,5 @@
 import 'package:code_comments_flutter/Courses/coursedetails.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../Messaging/messages.dart';
 import '../themes.dart';
@@ -69,7 +70,7 @@ class _CoursesPageState extends State<CoursesPage> {
                         ),
                         onTap: () {
                           var navigator = Navigator.of(context);
-                          navigator.push(MaterialPageRoute(
+                          navigator.push(CupertinoPageRoute(
                               builder: (context) => CoursePage()));
                         },
                       ),

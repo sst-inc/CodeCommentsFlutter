@@ -1,4 +1,5 @@
 import 'package:code_comments_flutter/Calendar/calendarExamples.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:intl/intl.dart';
@@ -102,7 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           child: Card(child: chatsDataView(index)),
                           onTap: () {
                             var navigator = Navigator.of(context);
-                            navigator.push(MaterialPageRoute(
+                            navigator.push(CupertinoPageRoute(
                                 builder: (context) => const ChatsInterface()));
                           },
                         ),

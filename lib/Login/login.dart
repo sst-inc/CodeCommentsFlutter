@@ -1,4 +1,7 @@
+import 'package:code_comments_flutter/Login/register.dart';
+import 'package:code_comments_flutter/homescreen.dart';
 import 'package:code_comments_flutter/themes.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -19,11 +22,19 @@ class _LoginScreenState extends State<LoginScreen> {
           title: Text("Login"),
           actions: [
             TextButton(
-              onPressed: () {},
-              child: Text("Register"),
+              onPressed: () {
+                var navigator = Navigator.of(context);
+                navigator.push(CupertinoPageRoute(
+                  builder: (context) => RegisterView(),
+                ));
+              },
+              child: Text(
+                "Register",
+                style: TextStyle(fontSize: 17),
+              ),
             ),
             SizedBox(
-              width: 15,
+              width: 10,
             )
           ],
         ),
@@ -61,7 +72,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 10,
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    var navigator = Navigator.of(context);
+                    navigator.push(CupertinoPageRoute(
+                        builder: ((context) => MyHomePage())));
+                  },
                   child: Row(
                     children: [
                       SizedBox(
