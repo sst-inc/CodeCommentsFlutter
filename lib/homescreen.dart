@@ -64,9 +64,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     () {
                       selectedCalViewDay = selected;
                       focusedCalViewDay = focused;
-                      getCals(selected);
                     },
                   );
+                  areCalendarsLoaded = 0;
+                  getCals(selected);
                 },
               ),
               Flexible(
@@ -74,18 +75,23 @@ class _MyHomePageState extends State<MyHomePage> {
                 fit: FlexFit.tight,
                 child: areCalendarsLoaded == 0
                     ? const Center(child: CircularProgressIndicator())
-                    : SingleChildScrollView(
-                        child: Column(
-                          children: listOfCardWidgets.isEmpty
-                              // TODO: Need to implement view to tell users that there is nothing in their calendars
-                              ? [
-                                  const Center(
-                                      child: Text(
-                                          "There seems to be nothing in your calendar today as of now"))
-                                ]
-                              : [...listOfCardWidgets],
-                        ),
-                      ),
+                    : listOfCardWidgets.isEmpty && areCalendarsLoaded != 0
+                        // TODO: Need to implement view to tell users that there is nothing in their calendars
+                        ? Center(
+                            child: Column(children: const [
+                            Text(
+                              "Hm.",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(fontSize: 35),
+                            ),
+                            Text(
+                              "There seems to be nothing in your calendar today as of now",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(fontSize: 20),
+                            ),
+                          ]))
+                        : SingleChildScrollView(
+                            child: Column(children: [...listOfCardWidgets!])),
               ),
               Divider(
                 thickness: 1,
@@ -169,6 +175,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void getCals([DateTime? date]) {
     List<CalendarEvent> tempCalEvents = [];
+    setState(() {
+      areCalendarsLoaded = 0;
+    });
 
     if (!lockHeld) {
       lockHeld = true;
