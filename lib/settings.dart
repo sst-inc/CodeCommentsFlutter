@@ -28,10 +28,9 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Settings")),
+      appBar: AppBar(title: const Text("Settings")),
       floatingActionButton: !enteredEditMode
           ? FloatingActionButton(
-              child: !enteredEditMode ? Icon(Icons.edit) : Icon(Icons.check),
               onPressed: () {
                 setState(() {
                   enteredEditMode = !enteredEditMode;
@@ -39,12 +38,15 @@ class _SettingsPageState extends State<SettingsPage> {
               },
               enableFeedback: true,
               backgroundColor: Theme.of(context).primaryColor,
+              child: !enteredEditMode
+                  ? const Icon(Icons.edit)
+                  : const Icon(Icons.check),
             )
           : Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Padding(
-                  padding: EdgeInsets.only(bottom: 10),
+                  padding: const EdgeInsets.only(bottom: 10),
                   child: FloatingActionButton(
                     mini: true,
                     onPressed: () {
@@ -58,11 +60,10 @@ class _SettingsPageState extends State<SettingsPage> {
                     },
                     enableFeedback: true,
                     backgroundColor: Theme.of(context).primaryColor,
-                    child: Icon(Icons.cancel_outlined),
+                    child: const Icon(Icons.cancel_outlined),
                   ),
                 ),
                 FloatingActionButton(
-                  child: Icon(Icons.check),
                   onPressed: () {
                     setState(() {
                       if (_modifiedBio) {
@@ -84,6 +85,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   },
                   enableFeedback: true,
                   backgroundColor: Theme.of(context).primaryColor,
+                  child: const Icon(Icons.check),
                 )
               ],
             ),
@@ -95,7 +97,7 @@ class _SettingsPageState extends State<SettingsPage> {
             children: [
               Center(
                 child: Padding(
-                  padding: EdgeInsets.only(bottom: 20),
+                  padding: const EdgeInsets.only(bottom: 20),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(150),
                     child: Image.network(
@@ -110,31 +112,31 @@ class _SettingsPageState extends State<SettingsPage> {
                   ? Column(children: [
                       // TODO: find a better way to display all of these without looking ugly
                       Padding(
-                        padding: EdgeInsets.only(top: 10),
+                        padding: const EdgeInsets.only(top: 10),
                         child: Text(
-                          "Welcome, ${name}",
-                          style: TextStyle(fontSize: 30),
+                          "Welcome, $name",
+                          style: const TextStyle(fontSize: 30),
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(top: 10),
+                        padding: const EdgeInsets.only(top: 10),
                         child: Text(
-                          "${email}",
-                          style: TextStyle(fontSize: 20),
+                          email,
+                          style: const TextStyle(fontSize: 20),
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(top: 10),
+                        padding: const EdgeInsets.only(top: 10),
                         child: Text(
                           bio,
-                          style: TextStyle(fontSize: 20),
+                          style: const TextStyle(fontSize: 20),
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(top: 10),
+                        padding: const EdgeInsets.only(top: 10),
                         child: Text(
-                          "${occupation} who teaches ${taughtLangs}",
-                          style: TextStyle(fontSize: 20),
+                          "$occupation who teaches $taughtLangs",
+                          style: const TextStyle(fontSize: 20),
                           textAlign: TextAlign.center,
                         ),
                       )
@@ -142,14 +144,14 @@ class _SettingsPageState extends State<SettingsPage> {
                   : Column(
                       children: [
                         Padding(
-                          padding: EdgeInsets.only(bottom: 15),
+                          padding: const EdgeInsets.only(bottom: 15),
                           child: TextFormField(
                             initialValue: taughtLangs,
                             onChanged: (value) {
                               _tempTaughtLangs = value;
                               _modifiedTempLangs = true;
                             },
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 labelText: "Taught Languages",
                                 floatingLabelBehavior:
@@ -157,14 +159,14 @@ class _SettingsPageState extends State<SettingsPage> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(bottom: 15),
+                          padding: const EdgeInsets.only(bottom: 15),
                           child: TextFormField(
                             initialValue: bio,
                             onChanged: (value) {
                               _tempBio = value;
                               _modifiedBio = true;
                             },
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 labelText: "Bio",
                                 floatingLabelBehavior:
@@ -172,11 +174,11 @@ class _SettingsPageState extends State<SettingsPage> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(bottom: 15),
+                          padding: const EdgeInsets.only(bottom: 15),
                           child: TextFormField(
                             enabled: false,
                             initialValue: name,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 labelText: "Name",
                                 floatingLabelBehavior:
@@ -184,11 +186,11 @@ class _SettingsPageState extends State<SettingsPage> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(bottom: 15),
+                          padding: const EdgeInsets.only(bottom: 15),
                           child: TextFormField(
                             enabled: false,
                             initialValue: email,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 labelText: "Email",
                                 floatingLabelBehavior:
@@ -196,11 +198,11 @@ class _SettingsPageState extends State<SettingsPage> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(bottom: 15),
+                          padding: const EdgeInsets.only(bottom: 15),
                           child: TextFormField(
                             enabled: false,
                             initialValue: occupation,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 labelText: "Occupation",
                                 floatingLabelBehavior:
@@ -212,10 +214,10 @@ class _SettingsPageState extends State<SettingsPage> {
               ElevatedButton(
                 onPressed: () {
                   var navigator = Navigator.of(context);
-                  navigator.push(
-                      CupertinoPageRoute(builder: (context) => DevMenu()));
+                  navigator.push(CupertinoPageRoute(
+                      builder: (context) => const DevMenu()));
                 },
-                child: Text(
+                child: const Text(
                   "Show dev menu",
                   style: TextStyle(fontSize: 16),
                 ),
