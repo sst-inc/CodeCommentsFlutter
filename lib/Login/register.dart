@@ -1,4 +1,5 @@
 import 'package:code_comments_flutter/homescreen.dart';
+import 'package:code_comments_flutter/main.dart';
 import 'package:code_comments_flutter/themes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -86,7 +87,7 @@ class _RegisterViewState extends State<RegisterView> {
                   onPressed: () {
                     var navigator = Navigator.of(context);
                     navigator.push(
-                        CupertinoPageRoute(builder: (context) => MyHomePage()));
+                        CupertinoPageRoute(builder: (context) => MyApp()));
                   },
                   child: Row(
                     children: [
