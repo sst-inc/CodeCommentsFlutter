@@ -1,3 +1,4 @@
+import 'package:code_comments_flutter/Login/login.dart';
 import 'package:code_comments_flutter/devmenu.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,10 +13,10 @@ class SettingsPage extends StatefulWidget {
 class _SettingsPageState extends State<SettingsPage> {
   bool enteredEditMode = false;
 
-  String name = "Person Dude";
+  String name = "Wavin Wagpal";
   String email = "person@gmail.com";
   String occupation = "Programmer";
-  String bio = "hi";
+  String bio = "never gonna give you up";
 
   // TODO: allow this to be a list instead of a String
   String taughtLangs = "Py";
@@ -221,11 +222,25 @@ class _SettingsPageState extends State<SettingsPage> {
                   "Show dev menu",
                   style: TextStyle(fontSize: 16),
                 ),
-              )
-            ],
+                SizedBox(
+                  height: 10,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    var navigator = Navigator.of(context);
+                    navigator.push(CupertinoPageRoute(
+                        builder: (context) => LoginScreen()));
+                  },
+                  child: Text(
+                    "Log Out",
+                    style: TextStyle(fontSize: 16, color: Colors.red),
+                  ),
+                )
+              ],
+            ),
           ),
         ),
-      )),
+      ),
     );
   }
 }
