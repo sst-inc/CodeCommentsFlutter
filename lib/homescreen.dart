@@ -46,6 +46,13 @@ class _MyHomePageState extends State<MyHomePage> {
               const EdgeInsets.only(right: 10, left: 10, bottom: 10, top: 0),
           child: Column(
             children: [
+              Text(
+                "Upcoming Classes",
+                style: TextStyle(fontSize: 18),
+              ),
+              SizedBox(
+                height: 10,
+              ),
               TableCalendar(
                 calendarStyle: const CalendarStyle(
                   isTodayHighlighted: true,
@@ -101,6 +108,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 color: brightness == Brightness.dark
                     ? Color.fromRGBO(104, 102, 102, 1.0)
                     : Color.fromRGBO(77, 75, 75, 1.0),
+              ),
+              Text(
+                "Recent Chats",
+                style: TextStyle(fontSize: 18),
+              ),
+              SizedBox(
+                height: 10,
               ),
               Flexible(
                 flex: 2,

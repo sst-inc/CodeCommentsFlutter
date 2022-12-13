@@ -13,10 +13,10 @@ class SettingsPage extends StatefulWidget {
 class _SettingsPageState extends State<SettingsPage> {
   bool enteredEditMode = false;
 
-  String name = "Person Dude";
+  String name = "Wavin Wagpal";
   String email = "person@gmail.com";
   String occupation = "Programmer";
-  String bio = "hi";
+  String bio = "never gonna give you up";
 
   // TODO: allow this to be a list instead of a String
   String taughtLangs = "Py";
