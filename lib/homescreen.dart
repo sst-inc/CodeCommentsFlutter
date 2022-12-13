@@ -46,9 +46,15 @@ class _MyHomePageState extends State<MyHomePage> {
               const EdgeInsets.only(right: 10, left: 10, bottom: 10, top: 0),
           child: Column(
             children: [
+              SizedBox(
+                height: 10,
+              ),
               Text(
                 "Upcoming Classes",
-                style: TextStyle(fontSize: 18),
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
               SizedBox(
                 height: 10,
@@ -109,9 +115,15 @@ class _MyHomePageState extends State<MyHomePage> {
                     ? Color.fromRGBO(104, 102, 102, 1.0)
                     : Color.fromRGBO(77, 75, 75, 1.0),
               ),
+              SizedBox(
+                height: 10,
+              ),
               Text(
                 "Recent Chats",
-                style: TextStyle(fontSize: 18),
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
               SizedBox(
                 height: 10,
@@ -161,7 +173,6 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Flexible(
               flex: 1,
-              fit: FlexFit.tight,
               child: Padding(padding: EdgeInsets.zero, child: Container()),
             ),
             Flexible(
