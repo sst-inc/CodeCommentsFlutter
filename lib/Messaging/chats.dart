@@ -2,6 +2,8 @@ import 'package:code_comments_flutter/Messaging/messages.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../Miscellaneous/HamburgerMenu.dart';
+
 class ChatsPage extends StatefulWidget {
   const ChatsPage({super.key});
 
@@ -14,9 +16,8 @@ class _ChatsPageState extends State<ChatsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Chats"),
-      ),
+      appBar: AppBar(title: Text("Chats"), centerTitle: false),
+      drawer: DrawerActions(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showModalBottomSheet(

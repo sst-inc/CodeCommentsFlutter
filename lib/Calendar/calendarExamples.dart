@@ -108,7 +108,7 @@ Future<List<CalendarEvent>?> fetchEventsByDateRange(CalendarPlugin plugin,
 void addEvent(CalendarPlugin plugin, dynamic calendarId,
     CalendarEvent calendarEvent, Function getEventId) async {
   DateTime startDate = DateTime.now();
-  DateTime endDate = startDate.add(Duration(hours: 3));
+  DateTime endDate = startDate.add(const Duration(hours: 3));
   plugin
       .createEvent(calendarId: calendarId, event: calendarEvent)
       .then((evenId) {
