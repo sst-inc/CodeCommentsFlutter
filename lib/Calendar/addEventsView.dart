@@ -11,20 +11,24 @@ class AddEventsView extends StatefulWidget {
 class _AddEventsViewState extends State<AddEventsView> {
   bool repeats = false;
   bool allDay = false;
+  bool notify = false;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Padding(
-        padding: EdgeInsets.all(20),
+        padding: MediaQuery.of(context).viewInsets,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TextField(
-              textAlign: TextAlign.left,
-              decoration: InputDecoration(hintText: "Add title"),
-              style: TextStyle(
-                fontSize: 35,
+            Padding(
+              padding: EdgeInsets.all(20),
+              child: TextField(
+                textAlign: TextAlign.left,
+                decoration: InputDecoration(hintText: "Add title"),
+                style: TextStyle(
+                  fontSize: 35,
+                ),
               ),
             ),
             Padding(
@@ -60,9 +64,11 @@ class _AddEventsViewState extends State<AddEventsView> {
                     value: repeats,
                     activeColor: darkTheme(context).selectedRowColor,
                     onChanged: (bool value) {
-                      setState(() {
-                        repeats = value;
-                      });
+                      setState(
+                        () {
+                          repeats = value;
+                        },
+                      );
                     },
                   ),
                 )
@@ -86,6 +92,48 @@ class _AddEventsViewState extends State<AddEventsView> {
                     onChanged: (bool value) {
                       setState(() {
                         allDay = value;
+                      });
+                    },
+                  ),
+                )
+              ],
+            ),
+            Row(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(left: 7),
+                  child: Text(
+                    "Notify",
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 10, right: 10),
+                  child: SizedBox(
+                    width: 40,
+                    child: TextField(
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(hintText: "30"),
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 7),
+                  child: Text(
+                    "minutes before",
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ),
+                Spacer(),
+                Padding(
+                  padding: EdgeInsets.only(left: 10),
+                  child: Switch(
+                    value: notify,
+                    activeColor: darkTheme(context).selectedRowColor,
+                    onChanged: (bool value) {
+                      setState(() {
+                        notify = value;
                       });
                     },
                   ),
