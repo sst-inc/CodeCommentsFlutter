@@ -15,6 +15,18 @@ var conversations = [
     senderName: "Nikhil Nallani",
     senderPfpUrl:
         "https://play-lh.googleusercontent.com/8ddL1kuoNUB5vUvgDVjYY3_6HwQcrg1K2fd_R8soD-e2QYj8fT9cfhfh3G0hnSruLKec",
+  ),
+  ChatDisplayView(
+    lastMessage: "When do you want to call",
+    senderName: "KOTTAIMUTHU SHRINITHI student",
+    senderPfpUrl:
+        "https://wompampsupport.azureedge.net/fetchimage?siteId=7575&v=2&jpgQuality=100&width=700&url=https%3A%2F%2Fi.kym-cdn.com%2Fentries%2Ficons%2Fmedium%2F000%2F037%2F349%2FScreenshot_14.jpg",
+  ),
+  ChatDisplayView(
+    lastMessage: "Heh.",
+    senderName: "Sairam Suresh",
+    senderPfpUrl:
+        "https://i.scdn.co/image/ab6761610000e5ebe1408498d7f528e3671616b1",
   )
 ];
 
@@ -104,7 +116,7 @@ class _ChatsPageState extends State<ChatsPage> {
                                     separatorBuilder:
                                         (BuildContext context, int index) =>
                                             Container(),
-                                    itemCount: 2)
+                                    itemCount: conversations.length)
                               ],
                             ),
                           ),
@@ -138,7 +150,7 @@ class _ChatsPageState extends State<ChatsPage> {
                       ),
                   separatorBuilder: (BuildContext context, int index) =>
                       Container(),
-                  itemCount: 2)
+                  itemCount: conversations.length)
             ],
           ),
         ),

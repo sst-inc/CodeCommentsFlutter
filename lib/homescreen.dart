@@ -1,4 +1,5 @@
 import 'package:code_comments_flutter/Calendar/calendarExamples.dart';
+import 'package:code_comments_flutter/Messaging/chats.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -106,7 +107,7 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ]))
                         : SingleChildScrollView(
-                            child: Column(children: [...listOfCardWidgets!])),
+                            child: Column(children: [...listOfCardWidgets])),
               ),
               Divider(
                 thickness: 1,
@@ -141,7 +142,7 @@ class _HomePageState extends State<HomePage> {
                                 builder: (context) => const ChatsInterface()));
                           },
                         ),
-                    itemCount: 3),
+                    itemCount: conversations.length),
               ),
             ],
           ),
@@ -152,7 +153,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget chatsDataView(int index) {
     return Padding(
-      padding: const EdgeInsets.all(5),
+      padding: const EdgeInsets.all(10),
       child: ListTile(
         title: Row(
           children: [
@@ -164,7 +165,7 @@ class _HomePageState extends State<HomePage> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(100),
                   child: Image.network(
-                    "https://media-exp1.licdn.com/dms/image/C5603AQHf-tyMIg6VdQ/profile-displayphoto-shrink_800_800/0/1644684573336?e=2147483647&v=beta&t=fBigrt6W2MFOghS9uEY3WaatzuQtmJnr3yY9dSxs4_Y",
+                    conversations[index].senderPfpUrl,
                     height: 50,
                   ),
                 ),
@@ -172,6 +173,7 @@ class _HomePageState extends State<HomePage> {
             ),
             Flexible(
               flex: 1,
+              fit: FlexFit.tight,
               child: Padding(padding: EdgeInsets.zero, child: Container()),
             ),
             Flexible(
@@ -183,12 +185,12 @@ class _HomePageState extends State<HomePage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Wavin Wagpal $index",
+                      conversations[index].senderName,
                       style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    const Text(
-                      "last message sent",
-                      style: TextStyle(fontWeight: FontWeight.w400),
+                    Text(
+                      conversations[index].lastMessage,
+                      style: const TextStyle(fontWeight: FontWeight.w400),
                     )
                   ],
                 ),
