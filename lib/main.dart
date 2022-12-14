@@ -1,13 +1,12 @@
 import 'package:code_comments_flutter/Calendar/scheduling.dart';
 import 'package:code_comments_flutter/Courses/courses.dart';
 import 'package:code_comments_flutter/Messaging/chats.dart';
-import 'package:code_comments_flutter/settings.dart';
+import 'package:code_comments_flutter/Settings/settings.dart';
 import 'package:flutter/material.dart';
 
 import 'Miscellaneous/HamburgerMenu.dart';
 import 'homescreen.dart';
 import 'themes.dart';
-import 'package:code_comments_flutter/settings.dart';
 
 void main() {
   runApp(const MyApp());
@@ -40,23 +39,29 @@ class _ScaffoldMaterialState extends State<ScaffoldMaterial> {
     "Settings"
   ];
   String title = "Home";
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-      title = listOfTitles[_selectedIndex];
-    });
-  }
+  bool openSettingsInEditMode = false;
 
   @override
   Widget build(BuildContext context) {
+    void _onItemTapped(int index, bool? openSettingsInEditor) {
+      setState(() {
+        _selectedIndex = index;
+        title = listOfTitles[_selectedIndex];
+      });
+      if (openSettingsInEditor != null) {
+        setState(() {
+          openSettingsInEditMode = openSettingsInEditor;
+        });
+      }
+    }
+
     return MaterialApp(
       theme: lightTheme(context),
       darkTheme: darkTheme(context),
       home: DefaultTabController(
         length: 5,
         child: Scaffold(
-          drawer: DrawerActions(),
+          drawer: DrawerActions(onEditButtonPressed: _onItemTapped),
           appBar: AppBar(
               title: Text(title),
               centerTitle: false,
@@ -68,15 +73,17 @@ class _ScaffoldMaterialState extends State<ScaffoldMaterial> {
                   Tab(icon: Icon(Icons.book)),
                   Tab(icon: Icon(Icons.settings)),
                 ],
-                onTap: _onItemTapped,
+                onTap: (value) {
+                  _onItemTapped(value, false);
+                },
               )),
           body: TabBarView(
             children: [
-              MyHomePage(),
+              HomePage(),
               ChatsPage(),
               SchedulingView(),
               CoursesPage(),
-              SettingsPage(),
+              SettingsPage(openInEditMode: openSettingsInEditMode),
             ],
           ),
         ),

@@ -2,8 +2,6 @@ import 'package:code_comments_flutter/Courses/coursedetails.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../Miscellaneous/HamburgerMenu.dart';
-
 class CoursesPage extends StatefulWidget {
   const CoursesPage({super.key});
 
@@ -15,7 +13,6 @@ class _CoursesPageState extends State<CoursesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: DrawerActions(),
       body: SafeArea(
         child: Padding(
           // TODO: Rework this screen

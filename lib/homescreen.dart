@@ -1,5 +1,4 @@
 import 'package:code_comments_flutter/Calendar/calendarExamples.dart';
-import 'package:code_comments_flutter/Miscellaneous/HamburgerMenu.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -9,14 +8,14 @@ import 'package:table_calendar/table_calendar.dart';
 
 import 'Messaging/messages.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _HomePageState extends State<HomePage> {
   CalendarPlugin plugin = CalendarPlugin();
 
   // Have to do with obtaining all user events frm calendar
@@ -40,7 +39,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: DrawerActions(),
       body: SafeArea(
         child: Padding(
           padding:

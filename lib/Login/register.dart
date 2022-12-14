@@ -1,9 +1,7 @@
-import 'package:code_comments_flutter/homescreen.dart';
 import 'package:code_comments_flutter/main.dart';
 import 'package:code_comments_flutter/themes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 class RegisterView extends StatefulWidget {

@@ -3,7 +3,6 @@ import 'package:code_comments_flutter/Messaging/messages.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../Miscellaneous/HamburgerMenu.dart';
 var conversations = [
   ChatDisplayView(
     lastMessage: "Amogus",
@@ -30,7 +29,6 @@ class _ChatsPageState extends State<ChatsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: DrawerActions(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showModalBottomSheet(

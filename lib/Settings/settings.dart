@@ -4,14 +4,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SettingsPage extends StatefulWidget {
-  const SettingsPage({super.key});
+  bool openInEditMode = false;
+  SettingsPage({super.key, this.openInEditMode = false});
 
   @override
   State<SettingsPage> createState() => _SettingsPageState();
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  bool enteredEditMode = false;
+  // bool enteredEditMode = false;
 
   String name = "Wavin Wagpal";
   String email = "person@gmail.com";
@@ -27,15 +28,22 @@ class _SettingsPageState extends State<SettingsPage> {
   bool _modifiedTempLangs = false;
 
   @override
+  void initState() {
+    super.initState();
+    // enteredEditMode = widget.openInEditMode;
+    // widget.openInEditMode = false;
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Settings")),
-      floatingActionButton: !enteredEditMode
+      floatingActionButton: !widget.openInEditMode
           ? FloatingActionButton(
-              child: !enteredEditMode ? Icon(Icons.edit) : Icon(Icons.check),
+              child:
+                  !widget.openInEditMode ? Icon(Icons.edit) : Icon(Icons.check),
               onPressed: () {
                 setState(() {
-                  enteredEditMode = !enteredEditMode;
+                  widget.openInEditMode = !widget.openInEditMode;
                 });
               },
               enableFeedback: true,
@@ -54,7 +62,8 @@ class _SettingsPageState extends State<SettingsPage> {
                         _tempTaughtLangs = "";
                         _modifiedBio = false;
                         _modifiedTempLangs = false;
-                        enteredEditMode = !enteredEditMode;
+                        // enteredEditMode = !enteredEditMode;
+                        widget.openInEditMode = false;
                       });
                     },
                     enableFeedback: true,
@@ -80,7 +89,8 @@ class _SettingsPageState extends State<SettingsPage> {
                       _tempTaughtLangs = "";
                       _modifiedBio = false;
                       _modifiedTempLangs = false;
-                      enteredEditMode = !enteredEditMode;
+                      // enteredEditMode = !enteredEditMode;
+                      widget.openInEditMode = false;
                     });
                   },
                   enableFeedback: true,
@@ -107,7 +117,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   ),
                 ),
                 const Divider(),
-                !enteredEditMode
+                !widget.openInEditMode
                     ? Column(children: [
                         // TODO: find a better way to display all of these without looking ugly
                         Padding(
