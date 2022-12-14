@@ -139,8 +139,15 @@ class _MyHomePageState extends State<MyHomePage> {
                           child: Card(child: chatsDataView(index)),
                           onTap: () {
                             var navigator = Navigator.of(context);
-                            navigator.push(CupertinoPageRoute(
-                                builder: (context) => const ChatsInterface()));
+                            navigator.push(
+                              CupertinoPageRoute(
+                                builder: (context) => ChatsInterface(
+                                  nameOfPerson: conversations[index].senderName,
+                                  pfpImageUrl:
+                                      conversations[index].senderPfpUrl,
+                                ),
+                              ),
+                            );
                           },
                         ),
                     itemCount: conversations.length),
