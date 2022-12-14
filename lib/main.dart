@@ -4,7 +4,7 @@ import 'package:code_comments_flutter/Messaging/chats.dart';
 import 'package:flutter/material.dart';
 
 import 'homescreen.dart';
-import 'settings.dart';
+import 'Settings/settings.dart';
 import 'themes.dart';
 
 void main() {
