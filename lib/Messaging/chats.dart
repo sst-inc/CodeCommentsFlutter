@@ -1,8 +1,23 @@
+import 'package:code_comments_flutter/Messaging/chatDisplayModel.dart';
 import 'package:code_comments_flutter/Messaging/messages.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../Miscellaneous/HamburgerMenu.dart';
+var conversations = [
+  ChatDisplayView(
+    lastMessage: "Amogus",
+    senderName: "Wavin Wagpal",
+    senderPfpUrl:
+        "https://media-exp1.licdn.com/dms/image/C5603AQHf-tyMIg6VdQ/profile-displayphoto-shrink_800_800/0/1644684573336?e=2147483647&v=beta&t=fBigrt6W2MFOghS9uEY3WaatzuQtmJnr3yY9dSxs4_Y",
+  ),
+  ChatDisplayView(
+    lastMessage: "Hee hee hee haw",
+    senderName: "Nikhil Nallani",
+    senderPfpUrl:
+        "https://play-lh.googleusercontent.com/8ddL1kuoNUB5vUvgDVjYY3_6HwQcrg1K2fd_R8soD-e2QYj8fT9cfhfh3G0hnSruLKec",
+  )
+];
 
 class ChatsPage extends StatefulWidget {
   const ChatsPage({super.key});
@@ -63,7 +78,8 @@ class _ChatsPageState extends State<ChatsPage> {
                                                       BorderRadius.circular(
                                                           100),
                                                   child: Image.network(
-                                                    "https://media-exp1.licdn.com/dms/image/C5603AQHf-tyMIg6VdQ/profile-displayphoto-shrink_800_800/0/1644684573336?e=2147483647&v=beta&t=fBigrt6W2MFOghS9uEY3WaatzuQtmJnr3yY9dSxs4_Y",
+                                                    conversations[index]
+                                                        .senderPfpUrl,
                                                     height: 50,
                                                   ),
                                                 ),
@@ -71,7 +87,8 @@ class _ChatsPageState extends State<ChatsPage> {
                                                   width: 20,
                                                 ),
                                                 Text(
-                                                  "Wavin wagpal $index",
+                                                  conversations[index]
+                                                      .senderName,
                                                   style:
                                                       TextStyle(fontSize: 18),
                                                 ),
@@ -123,7 +140,7 @@ class _ChatsPageState extends State<ChatsPage> {
                       ),
                   separatorBuilder: (BuildContext context, int index) =>
                       Container(),
-                  itemCount: 5)
+                  itemCount: 2)
             ],
           ),
         ),
@@ -145,7 +162,7 @@ class _ChatsPageState extends State<ChatsPage> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(100),
                   child: Image.network(
-                    "https://media-exp1.licdn.com/dms/image/C5603AQHf-tyMIg6VdQ/profile-displayphoto-shrink_800_800/0/1644684573336?e=2147483647&v=beta&t=fBigrt6W2MFOghS9uEY3WaatzuQtmJnr3yY9dSxs4_Y",
+                    conversations[index].senderPfpUrl,
                     height: 50,
                   ),
                 ),
@@ -165,12 +182,12 @@ class _ChatsPageState extends State<ChatsPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Wavin Wagpal $index",
+                      conversations[index].senderName,
                       style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    const Text(
-                      "last message sent",
-                      style: TextStyle(fontWeight: FontWeight.w400),
+                    Text(
+                      conversations[index].lastMessage,
+                      style: const TextStyle(fontWeight: FontWeight.w400),
                     )
                   ],
                 ),

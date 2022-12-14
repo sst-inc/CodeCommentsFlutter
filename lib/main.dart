@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'Miscellaneous/HamburgerMenu.dart';
 import 'homescreen.dart';
 import 'themes.dart';
+import 'package:code_comments_flutter/settings.dart';
 
 void main() {
   runApp(const MyApp());
