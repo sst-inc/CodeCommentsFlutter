@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'chatMessageModel.dart';
 
 class ChatsInterface extends StatefulWidget {
-  const ChatsInterface({super.key});
-
+  ChatsInterface(
+      {required this.nameOfPerson, required this.pfpImageUrl, super.key});
+  String nameOfPerson;
+  String pfpImageUrl;
   @override
   State<ChatsInterface> createState() => _ChatsInterfaceState();
 }
@@ -37,14 +39,14 @@ class _ChatsInterfaceState extends State<ChatsInterface> {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(20),
                   child: Image.network(
-                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWsfakMpS0_MBEQWSK1zsZSK3nFqW2KhNnJYiySzQKLQ&s",
+                    widget.pfpImageUrl,
                     height: 40,
                   ),
                 ),
                 SizedBox(
                   width: 10,
                 ),
-                Text("Wavin Wagpal"),
+                Text(widget.nameOfPerson),
               ],
             ),
           ),

@@ -1,3 +1,4 @@
+import 'package:code_comments_flutter/Calendar/addEventsView.dart';
 import 'package:code_comments_flutter/Calendar/calendarExamples.dart';
 import 'package:code_comments_flutter/Calendar/createNewEvent.dart';
 import 'package:flutter/material.dart';
@@ -40,23 +41,25 @@ class _SchedulingViewState extends State<SchedulingView> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // showModalBottomSheet(
-          //   context: context,
-          //   builder: (context) {
-          //     return Scaffold(
-          //       appBar: AppBar(
-          //         title: Text("Create Calendar Event"),
-          //       ),
-          //       body: Container(
-          //         height: MediaQuery.of(context).size.height / 1.5,
-          //       ),
-          //     );
-          //   },
-          // );
-          Navigator.push(
+          showModalBottomSheet(
+            isScrollControlled: true,
+            context: context,
+            builder: (context) {
+              return Container(
+                height: MediaQuery.of(context).size.height * 0.85,
+                child: Scaffold(
+                  appBar: AppBar(
+                    title: Text("Create Calendar Event"),
+                  ),
+                  body: AddEventsView(),
+                ),
+              );
+            },
+          );
+          /*Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => CreateNewCalendarEvent()));
+                  builder: (context) => CreateNewCalendarEvent()));*/
         },
         backgroundColor: Theme.of(context).primaryColor,
         child: const Icon(Icons.add),
@@ -117,7 +120,7 @@ class _SchedulingViewState extends State<SchedulingView> {
                                 ),
                               ]))
                         : SingleChildScrollView(
-                            child: Column(children: [...listOfCardWidgets!])),
+                            child: Column(children: [...listOfCardWidgets])),
               ),
             ],
           ),
