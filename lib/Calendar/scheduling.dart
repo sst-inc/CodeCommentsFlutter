@@ -1,11 +1,12 @@
 import 'package:code_comments_flutter/Calendar/addEventsView.dart';
 import 'package:code_comments_flutter/Calendar/calendarExamples.dart';
-import 'package:code_comments_flutter/Calendar/createNewEvent.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:intl/intl.dart';
 import 'package:manage_calendar_events/manage_calendar_events.dart';
 import 'package:table_calendar/table_calendar.dart';
+
+import '../Miscellaneous/HamburgerMenu.dart';
 
 class SchedulingView extends StatefulWidget {
   const SchedulingView({super.key});
@@ -39,6 +40,11 @@ class _SchedulingViewState extends State<SchedulingView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Scheduling"),
+        centerTitle: false,
+      ),
+      drawer: DrawerActions(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showModalBottomSheet(

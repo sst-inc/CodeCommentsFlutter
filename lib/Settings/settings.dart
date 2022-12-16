@@ -3,6 +3,8 @@ import 'package:code_comments_flutter/Settings/devmenu.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../Miscellaneous/HamburgerMenu.dart';
+
 class SettingsPage extends StatefulWidget {
   bool openInEditMode = false;
   SettingsPage({super.key, this.openInEditMode = false});
@@ -30,13 +32,16 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   void initState() {
     super.initState();
-    // enteredEditMode = widget.openInEditMode;
-    // widget.openInEditMode = false;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Chats"),
+        centerTitle: false,
+      ),
+      drawer: DrawerActions(),
       floatingActionButton: !widget.openInEditMode
           ? FloatingActionButton(
               child:

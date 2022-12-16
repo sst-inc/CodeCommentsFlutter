@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 
 class DrawerActions extends StatefulWidget {
   final Function(int, bool)? onEditButtonPressed;
-  const DrawerActions({Key? key, this.onEditButtonPressed}) : super(key: key);
+  final Function(int)? onChangeScreenNeeded;
+  const DrawerActions(
+      {Key? key, this.onEditButtonPressed, this.onChangeScreenNeeded})
+      : super(key: key);
 
   @override
   State<DrawerActions> createState() => _DrawerActionsState();
@@ -61,9 +64,11 @@ class _DrawerActionsState extends State<DrawerActions> {
           ListTile(
             title: const Text('Settings'),
             onTap: () {
-              // Update the state of the app
-              // ...
-              // Then close the drawer
+              if (widget.onChangeScreenNeeded != null) {
+                widget.onChangeScreenNeeded!(4);
+                DefaultTabController.of(context)!.animateTo(4);
+                print(widget.onChangeScreenNeeded!);
+              }
               Navigator.pop(context);
             },
           ),

@@ -1,5 +1,6 @@
 import 'package:code_comments_flutter/Calendar/calendarExamples.dart';
 import 'package:code_comments_flutter/Messaging/chats.dart';
+import 'package:code_comments_flutter/Miscellaneous/HamburgerMenu.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -40,6 +41,8 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text("Home"), centerTitle: false),
+      drawer: DrawerActions(),
       body: SafeArea(
         child: Padding(
           padding:

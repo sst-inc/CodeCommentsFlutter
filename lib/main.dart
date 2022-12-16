@@ -31,23 +31,29 @@ class ScaffoldMaterial extends StatefulWidget {
 
 class _ScaffoldMaterialState extends State<ScaffoldMaterial> {
   int _selectedIndex = 0;
-  List<String> listOfTitles = [
-    "Home",
-    "Chats",
-    "Scheduling",
-    "Courses",
-    "Settings"
-  ];
-  String title = "Home";
   bool openSettingsInEditMode = false;
+  List<Widget> listOfScreens = [const HomePage()];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    listOfScreens = [
+      const HomePage(),
+      const ChatsPage(),
+      const SchedulingView(),
+      const CoursesPage(),
+      SettingsPage(openInEditMode: openSettingsInEditMode)
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
-    void _onItemTapped(int index, bool? openSettingsInEditor) {
+    void _onItemTapped(int index, [bool? openSettingsInEditor]) {
       setState(() {
         _selectedIndex = index;
-        title = listOfTitles[_selectedIndex];
       });
+
       if (openSettingsInEditor != null) {
         setState(() {
           openSettingsInEditMode = openSettingsInEditor;
@@ -58,35 +64,37 @@ class _ScaffoldMaterialState extends State<ScaffoldMaterial> {
     return MaterialApp(
       theme: lightTheme(context),
       darkTheme: darkTheme(context),
-      home: DefaultTabController(
-        length: 5,
-        child: Scaffold(
-          drawer: DrawerActions(onEditButtonPressed: _onItemTapped),
-          appBar: AppBar(
-              title: Text(title),
-              centerTitle: false,
-              bottom: TabBar(
-                tabs: <Tab>[
-                  Tab(icon: Icon(Icons.home)),
-                  Tab(icon: Icon(Icons.messenger)),
-                  Tab(icon: Icon(Icons.calendar_month)),
-                  Tab(icon: Icon(Icons.book)),
-                  Tab(icon: Icon(Icons.settings)),
-                ],
-                onTap: (value) {
-                  _onItemTapped(value, false);
-                },
-              )),
-          body: TabBarView(
-            children: [
-              HomePage(),
-              ChatsPage(),
-              SchedulingView(),
-              CoursesPage(),
-              SettingsPage(openInEditMode: openSettingsInEditMode),
+      home: Scaffold(
+        drawer: DrawerActions(
+            onEditButtonPressed: _onItemTapped,
+            onChangeScreenNeeded: _onItemTapped),
+        body: listOfScreens[_selectedIndex],
+        bottomNavigationBar: NavigationBar(
+            destinations: const [
+              NavigationDestination(
+                icon: Icon(Icons.home),
+                label: 'Home',
+              ),
+              NavigationDestination(
+                icon: Icon(Icons.messenger),
+                label: 'Chats',
+              ),
+              NavigationDestination(
+                icon: Icon(Icons.calendar_month),
+                label: 'Scheduling',
+              ),
+              NavigationDestination(
+                icon: Icon(Icons.book),
+                label: 'Courses',
+              ),
+              NavigationDestination(
+                icon: Icon(Icons.settings),
+                label: 'Settings',
+              ),
             ],
-          ),
-        ),
+            onDestinationSelected: _onItemTapped,
+            selectedIndex: _selectedIndex,
+            surfaceTintColor: Theme.of(context).primaryColor),
       ),
     );
   }
