@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text("Home"),
+          title: Text("Upcoming Classes"),
           centerTitle: false,
           leading: MaterialButton(
             onPressed: () {
@@ -56,19 +56,6 @@ class _HomePageState extends State<HomePage> {
               const EdgeInsets.only(right: 10, left: 10, bottom: 10, top: 0),
           child: Column(
             children: [
-              SizedBox(
-                height: 10,
-              ),
-              Text(
-                "Upcoming Classes",
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
               TableCalendar(
                 calendarStyle: const CalendarStyle(
                   isTodayHighlighted: true,

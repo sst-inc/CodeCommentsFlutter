@@ -15,7 +15,7 @@ class _CoursesPageState extends State<CoursesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text("Courses"),
+          title: Text("Currently Enrolled"),
           centerTitle: false,
           leading: MaterialButton(
             onPressed: () {
@@ -26,16 +26,9 @@ class _CoursesPageState extends State<CoursesPage> {
       body: SafeArea(
         child: Padding(
           // TODO: Rework this screen
-          padding: EdgeInsets.all(20),
+          padding: EdgeInsets.all(0),
           child: Column(
             children: [
-              Text(
-                "Currently enrolled",
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.w600),
-              ),
-              SizedBox(
-                height: 20,
-              ),
               ListView.separated(
                   shrinkWrap: true,
                   scrollDirection: Axis.vertical,

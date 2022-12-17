@@ -38,7 +38,7 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text("Chats"),
+          title: Text("Settings"),
           centerTitle: false,
           leading: MaterialButton(
             onPressed: () {
