@@ -51,6 +51,15 @@ class _SchedulingViewState extends State<SchedulingView> {
                 child: Scaffold(
                   appBar: AppBar(
                     title: Text("Create Calendar Event"),
+                    actions: [
+                      TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          "Save",
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      ),
+                    ],
                   ),
                   body: AddEventsView(),
                 ),
