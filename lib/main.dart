@@ -2,9 +2,11 @@ import 'package:code_comments_flutter/Calendar/scheduling.dart';
 import 'package:code_comments_flutter/Courses/courses.dart';
 import 'package:code_comments_flutter/Messaging/chats.dart';
 import 'package:code_comments_flutter/Settings/settings.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'Miscellaneous/HamburgerMenu.dart';
+import 'firebase_options.dart';
 import 'homescreen.dart';
 import 'themes.dart';
 
@@ -37,8 +39,16 @@ class _ScaffoldMaterialState extends State<ScaffoldMaterial> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
+
+    Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    ).then((value) {
+      print(value);
+    }).onError((error, stackTrace) {
+      print("Firebase failed!");
+    });
+
     listOfScreens = [
       HomePage(outerScaffoldKey: scaffoldKey),
       ChatsPage(outerScaffoldKey: scaffoldKey),
