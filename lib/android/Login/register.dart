@@ -2,7 +2,6 @@ import 'package:code_comments_flutter/android/themes.dart';
 import 'package:code_comments_flutter/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key});

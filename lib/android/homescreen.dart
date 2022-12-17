@@ -8,14 +8,17 @@ import 'package:intl/intl.dart';
 import 'package:manage_calendar_events/manage_calendar_events.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+import 'package:code_comments_flutter/android/Messaging/messages.dart';
+
+class HomePage extends StatefulWidget {
+  HomePage({super.key, required this.outerScaffoldKey});
+  GlobalKey<ScaffoldState> outerScaffoldKey;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _HomePageState extends State<HomePage> {
   CalendarPlugin plugin = CalendarPlugin();
 
   // Have to do with obtaining all user events frm calendar
@@ -39,26 +42,21 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Home")),
+      appBar: AppBar(
+          title: Text("Upcoming Classes"),
+          centerTitle: false,
+          leading: MaterialButton(
+            onPressed: () {
+              widget.outerScaffoldKey.currentState!.openDrawer();
+            },
+            child: Icon(Icons.menu),
+          )),
       body: SafeArea(
         child: Padding(
           padding:
               const EdgeInsets.only(right: 10, left: 10, bottom: 10, top: 0),
           child: Column(
             children: [
-              SizedBox(
-                height: 10,
-              ),
-              Text(
-                "Upcoming Classes",
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
               TableCalendar(
                 calendarStyle: const CalendarStyle(
                   isTodayHighlighted: true,

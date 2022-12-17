@@ -35,11 +35,52 @@ class ScaffoldMaterial extends StatefulWidget {
 
 class _ScaffoldMaterialState extends State<ScaffoldMaterial> {
   int _selectedIndex = 0;
+  bool openSettingsInEditMode = false;
+  List<Widget> listOfScreens = [];
+  final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  void _onItemTapped(int index) {
+  void _onItemTapped(int index, [bool? openSettingsInEditor]) {
     setState(() {
       _selectedIndex = index;
     });
+
+    if (openSettingsInEditor != null) {
+      setState(() {
+        openSettingsInEditMode = openSettingsInEditor;
+
+        listOfScreens = [
+          HomePage(outerScaffoldKey: scaffoldKey),
+          ChatsPage(outerScaffoldKey: scaffoldKey),
+          SchedulingView(outerScaffoldKey: scaffoldKey),
+          CoursesPage(outerScaffoldKey: scaffoldKey),
+          SettingsPage(
+              outerScaffoldKey: scaffoldKey,
+              openInEditMode: openSettingsInEditMode)
+        ];
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    ).then((value) {
+      print(value);
+    }).onError((error, stackTrace) {
+      print("Firebase failed!");
+    });
+
+    listOfScreens = [
+      HomePage(outerScaffoldKey: scaffoldKey),
+      ChatsPage(outerScaffoldKey: scaffoldKey),
+      SchedulingView(outerScaffoldKey: scaffoldKey),
+      CoursesPage(outerScaffoldKey: scaffoldKey),
+      SettingsPage(
+          outerScaffoldKey: scaffoldKey, openInEditMode: openSettingsInEditMode)
+    ];
   }
 
   @override
@@ -56,63 +97,73 @@ class _ScaffoldMaterialState extends State<ScaffoldMaterial> {
 
   @override
   Widget build(BuildContext context) {
+    void _onItemTapped(int index, [bool? openSettingsInEditor]) {
+      setState(() {
+        _selectedIndex = index;
+      });
+
+      if (openSettingsInEditor != null) {
+        setState(() {
+          openSettingsInEditMode = openSettingsInEditor;
+
+          listOfScreens = [
+            HomePage(outerScaffoldKey: scaffoldKey),
+            ChatsPage(outerScaffoldKey: scaffoldKey),
+            SchedulingView(outerScaffoldKey: scaffoldKey),
+            CoursesPage(outerScaffoldKey: scaffoldKey),
+            SettingsPage(
+                outerScaffoldKey: scaffoldKey,
+                openInEditMode: openSettingsInEditMode)
+          ];
+        });
+      }
+    }
+
     if (kIsWeb) {
       return MaterialApp(); // The app is running on web
     } else {
       if (Platform.isAndroid || Platform.isIOS) {
-        // TODO: Remove iOS from here as this code means that this will be shown on ios
         return MaterialApp(
           theme: lightTheme(context),
           darkTheme: darkTheme(context),
           home: Scaffold(
-            body: _selectedIndex == 0
-                ? const MyHomePage()
-                : (_selectedIndex == 1
-                    ? const ChatsPage()
-                    : (_selectedIndex == 2
-                        ? const SchedulingView()
-                        : (_selectedIndex == 3
-                            ? const CoursesPage()
-                            : const SettingsPage()))),
-            bottomNavigationBar: BottomNavigationBar(
-              items: const <BottomNavigationBarItem>[
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.home),
-                  label: 'Home',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.chat_bubble,
+            key: scaffoldKey,
+            drawer: DrawerActions(
+                onEditButtonPressed: _onItemTapped,
+                onChangeScreenNeeded: _onItemTapped),
+            body: listOfScreens[_selectedIndex],
+            bottomNavigationBar: NavigationBar(
+                destinations: const [
+                  NavigationDestination(
+                    icon: Icon(Icons.home),
+                    label: 'Home',
                   ),
-                  label: 'Chats',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.calendar_month,
+                  NavigationDestination(
+                    icon: Icon(Icons.messenger),
+                    label: 'Chats',
                   ),
-                  label: 'Scheduling',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.book,
+                  NavigationDestination(
+                    icon: Icon(Icons.calendar_month),
+                    label: 'Scheduling',
                   ),
-                  label: "Courses",
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.settings,
+                  NavigationDestination(
+                    icon: Icon(Icons.book),
+                    label: 'Courses',
                   ),
-                  label: 'Settings',
-                ),
-              ],
-              currentIndex: _selectedIndex,
-              onTap: _onItemTapped,
-              type: BottomNavigationBarType.shifting,
-            ),
+                  NavigationDestination(
+                    icon: Icon(Icons.settings),
+                    label: 'Settings',
+                  ),
+                ],
+                onDestinationSelected: _onItemTapped,
+                selectedIndex: _selectedIndex,
+                surfaceTintColor: Theme
+                    .of(context)
+                    .primaryColor),
           ),
         );
       } else {
-        return Text("Not Implemented");
+        return MaterialApp()
       }
     }
   }

@@ -3,7 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CoursesPage extends StatefulWidget {
-  const CoursesPage({super.key});
+  CoursesPage({super.key, required this.outerScaffoldKey});
+  GlobalKey<ScaffoldState> outerScaffoldKey;
 
   @override
   State<CoursesPage> createState() => _CoursesPageState();
@@ -13,20 +14,21 @@ class _CoursesPageState extends State<CoursesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Courses")),
+      appBar: AppBar(
+          title: Text("Currently Enrolled"),
+          centerTitle: false,
+          leading: MaterialButton(
+            onPressed: () {
+              widget.outerScaffoldKey.currentState!.openDrawer();
+            },
+            child: Icon(Icons.menu),
+          )),
       body: SafeArea(
         child: Padding(
           // TODO: Rework this screen
-          padding: EdgeInsets.all(20),
+          padding: EdgeInsets.all(0),
           child: Column(
             children: [
-              Text(
-                "Currently enrolled",
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.w600),
-              ),
-              SizedBox(
-                height: 20,
-              ),
               ListView.separated(
                   shrinkWrap: true,
                   scrollDirection: Axis.vertical,

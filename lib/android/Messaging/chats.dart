@@ -31,7 +31,8 @@ var conversations = [
 ];
 
 class ChatsPage extends StatefulWidget {
-  const ChatsPage({super.key});
+  ChatsPage({super.key, required this.outerScaffoldKey});
+  GlobalKey<ScaffoldState> outerScaffoldKey;
 
   @override
   State<ChatsPage> createState() => _ChatsPageState();
@@ -39,12 +40,17 @@ class ChatsPage extends StatefulWidget {
 
 class _ChatsPageState extends State<ChatsPage> {
   @override
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Chats"),
-      ),
+          title: Text("Chats"),
+          centerTitle: false,
+          leading: MaterialButton(
+            onPressed: () {
+              widget.outerScaffoldKey.currentState!.openDrawer();
+            },
+            child: Icon(Icons.menu),
+          )),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showModalBottomSheet(
