@@ -6,10 +6,9 @@ import 'package:intl/intl.dart';
 import 'package:manage_calendar_events/manage_calendar_events.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-import '../Miscellaneous/HamburgerMenu.dart';
-
 class SchedulingView extends StatefulWidget {
-  const SchedulingView({super.key});
+  SchedulingView({super.key, required this.outerScaffoldKey});
+  GlobalKey<ScaffoldState> outerScaffoldKey;
 
   @override
   State<SchedulingView> createState() => _SchedulingViewState();
@@ -41,10 +40,14 @@ class _SchedulingViewState extends State<SchedulingView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Scheduling"),
-        centerTitle: false,
-      ),
-      drawer: DrawerActions(),
+          title: Text("Scheduling"),
+          centerTitle: false,
+          leading: MaterialButton(
+            onPressed: () {
+              widget.outerScaffoldKey.currentState!.openDrawer();
+            },
+            child: Icon(Icons.menu),
+          )),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showModalBottomSheet(

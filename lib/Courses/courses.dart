@@ -2,10 +2,9 @@ import 'package:code_comments_flutter/Courses/coursedetails.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../Miscellaneous/HamburgerMenu.dart';
-
 class CoursesPage extends StatefulWidget {
-  const CoursesPage({super.key});
+  CoursesPage({super.key, required this.outerScaffoldKey});
+  GlobalKey<ScaffoldState> outerScaffoldKey;
 
   @override
   State<CoursesPage> createState() => _CoursesPageState();
@@ -16,10 +15,14 @@ class _CoursesPageState extends State<CoursesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Courses"),
-        centerTitle: false,
-      ),
-      drawer: DrawerActions(),
+          title: Text("Courses"),
+          centerTitle: false,
+          leading: MaterialButton(
+            onPressed: () {
+              widget.outerScaffoldKey.currentState!.openDrawer();
+            },
+            child: Icon(Icons.menu),
+          )),
       body: SafeArea(
         child: Padding(
           // TODO: Rework this screen

@@ -1,6 +1,5 @@
 import 'package:code_comments_flutter/Calendar/calendarExamples.dart';
 import 'package:code_comments_flutter/Messaging/chats.dart';
-import 'package:code_comments_flutter/Miscellaneous/HamburgerMenu.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -11,7 +10,8 @@ import 'package:table_calendar/table_calendar.dart';
 import 'Messaging/messages.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  HomePage({super.key, required this.outerScaffoldKey});
+  GlobalKey<ScaffoldState> outerScaffoldKey;
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -41,8 +41,15 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Home"), centerTitle: false),
-      drawer: DrawerActions(),
+      appBar: AppBar(
+          title: Text("Home"),
+          centerTitle: false,
+          leading: MaterialButton(
+            onPressed: () {
+              widget.outerScaffoldKey.currentState!.openDrawer();
+            },
+            child: Icon(Icons.menu),
+          )),
       body: SafeArea(
         child: Padding(
           padding:

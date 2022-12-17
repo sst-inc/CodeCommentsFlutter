@@ -32,18 +32,20 @@ class ScaffoldMaterial extends StatefulWidget {
 class _ScaffoldMaterialState extends State<ScaffoldMaterial> {
   int _selectedIndex = 0;
   bool openSettingsInEditMode = false;
-  List<Widget> listOfScreens = [const HomePage()];
+  List<Widget> listOfScreens = [];
+  final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     listOfScreens = [
-      const HomePage(),
-      const ChatsPage(),
-      const SchedulingView(),
-      const CoursesPage(),
-      SettingsPage(openInEditMode: openSettingsInEditMode)
+      HomePage(outerScaffoldKey: scaffoldKey),
+      ChatsPage(outerScaffoldKey: scaffoldKey),
+      SchedulingView(outerScaffoldKey: scaffoldKey),
+      CoursesPage(outerScaffoldKey: scaffoldKey),
+      SettingsPage(
+          outerScaffoldKey: scaffoldKey, openInEditMode: openSettingsInEditMode)
     ];
   }
 
@@ -65,6 +67,7 @@ class _ScaffoldMaterialState extends State<ScaffoldMaterial> {
       theme: lightTheme(context),
       darkTheme: darkTheme(context),
       home: Scaffold(
+        key: scaffoldKey,
         drawer: DrawerActions(
             onEditButtonPressed: _onItemTapped,
             onChangeScreenNeeded: _onItemTapped),

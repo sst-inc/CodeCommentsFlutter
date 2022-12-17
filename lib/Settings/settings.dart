@@ -3,11 +3,11 @@ import 'package:code_comments_flutter/Settings/devmenu.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../Miscellaneous/HamburgerMenu.dart';
-
 class SettingsPage extends StatefulWidget {
+  SettingsPage(
+      {super.key, this.openInEditMode = false, required this.outerScaffoldKey});
   bool openInEditMode = false;
-  SettingsPage({super.key, this.openInEditMode = false});
+  GlobalKey<ScaffoldState> outerScaffoldKey;
 
   @override
   State<SettingsPage> createState() => _SettingsPageState();
@@ -38,10 +38,14 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Chats"),
-        centerTitle: false,
-      ),
-      drawer: DrawerActions(),
+          title: Text("Chats"),
+          centerTitle: false,
+          leading: MaterialButton(
+            onPressed: () {
+              widget.outerScaffoldKey.currentState!.openDrawer();
+            },
+            child: Icon(Icons.menu),
+          )),
       floatingActionButton: !widget.openInEditMode
           ? FloatingActionButton(
               child:

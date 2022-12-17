@@ -1,6 +1,5 @@
 import 'package:code_comments_flutter/Messaging/chatDisplayModel.dart';
 import 'package:code_comments_flutter/Messaging/messages.dart';
-import 'package:code_comments_flutter/Miscellaneous/HamburgerMenu.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -32,7 +31,8 @@ var conversations = [
 ];
 
 class ChatsPage extends StatefulWidget {
-  const ChatsPage({super.key});
+  ChatsPage({super.key, required this.outerScaffoldKey});
+  GlobalKey<ScaffoldState> outerScaffoldKey;
 
   @override
   State<ChatsPage> createState() => _ChatsPageState();
@@ -43,10 +43,14 @@ class _ChatsPageState extends State<ChatsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Chats"),
-        centerTitle: false,
-      ),
-      drawer: DrawerActions(),
+          title: Text("Chats"),
+          centerTitle: false,
+          leading: MaterialButton(
+            onPressed: () {
+              widget.outerScaffoldKey.currentState!.openDrawer();
+            },
+            child: Icon(Icons.menu),
+          )),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showModalBottomSheet(
