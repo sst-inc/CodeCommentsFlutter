@@ -1,5 +1,6 @@
 import 'dart:io' show Platform;
 
+import 'package:code_comments_flutter/macos/MacOSEntryPoint.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 
@@ -20,6 +21,8 @@ class MyApp extends StatelessWidget {
     } else {
       if (Platform.isAndroid || Platform.isIOS) {
         return AndroidApp();
+      } else if (Platform.isMacOS) {
+        return MacOSApp();
       } else {
         return MaterialApp();
       }

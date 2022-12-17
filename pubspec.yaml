@@ -43,6 +43,7 @@ dependencies:
   intl: ^0.17.0
   flutter_speed_dial: ^6.2.0
   firebase_core: ^2.4.0
+  macos_ui: ^1.7.5
 
 dev_dependencies:
   flutter_test:
