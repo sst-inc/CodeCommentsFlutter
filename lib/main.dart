@@ -3,6 +3,7 @@ import 'dart:io' show Platform;
 import 'package:code_comments_flutter/android/Calendar/scheduling.dart';
 import 'package:code_comments_flutter/android/Courses/courses.dart';
 import 'package:code_comments_flutter/android/Messaging/chats.dart';
+import 'package:code_comments_flutter/android/Miscellaneous/HamburgerMenu.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
@@ -84,18 +85,6 @@ class _ScaffoldMaterialState extends State<ScaffoldMaterial> {
   }
 
   @override
-  void initState() {
-    super.initState();
-    Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
-    ).then((value) {
-      print(value);
-    }).onError((error, stackTrace) {
-      print("Firebase failed!");
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
     void _onItemTapped(int index, [bool? openSettingsInEditor]) {
       setState(() {
@@ -157,13 +146,11 @@ class _ScaffoldMaterialState extends State<ScaffoldMaterial> {
                 ],
                 onDestinationSelected: _onItemTapped,
                 selectedIndex: _selectedIndex,
-                surfaceTintColor: Theme
-                    .of(context)
-                    .primaryColor),
+                surfaceTintColor: Theme.of(context).primaryColor),
           ),
         );
       } else {
-        return MaterialApp()
+        return MaterialApp();
       }
     }
   }

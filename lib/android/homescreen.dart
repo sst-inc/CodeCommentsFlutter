@@ -8,8 +8,6 @@ import 'package:intl/intl.dart';
 import 'package:manage_calendar_events/manage_calendar_events.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-import 'package:code_comments_flutter/android/Messaging/messages.dart';
-
 class HomePage extends StatefulWidget {
   HomePage({super.key, required this.outerScaffoldKey});
   GlobalKey<ScaffoldState> outerScaffoldKey;
