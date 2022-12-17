@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../themes.dart';
+import '../Miscellaneous/themes.dart';
 
 class CoursePage extends StatefulWidget {
   const CoursePage({super.key});
