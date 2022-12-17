@@ -53,9 +53,12 @@ class _SchedulingViewState extends State<SchedulingView> {
                     actions: [
                       TextButton(
                         onPressed: () {},
-                        child: Text(
-                          "Save",
-                          style: TextStyle(fontSize: 18),
+                        child: Padding(
+                          padding: EdgeInsets.only(right: 10, left: 10),
+                          child: Text(
+                            "Save",
+                            style: TextStyle(fontSize: 20),
+                          ),
                         ),
                       ),
                     ],
