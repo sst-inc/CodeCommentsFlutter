@@ -52,7 +52,6 @@ class _DrawerActionsState extends State<DrawerActions> {
                         if (widget.onEditButtonPressed != null) {
                           widget.onEditButtonPressed!(4, true);
                         }
-                        DefaultTabController.of(context)!.animateTo(4);
                         Navigator.pop(context);
                       },
                       child: Icon(Icons.edit),
@@ -66,8 +65,6 @@ class _DrawerActionsState extends State<DrawerActions> {
             onTap: () {
               if (widget.onChangeScreenNeeded != null) {
                 widget.onChangeScreenNeeded!(4);
-                DefaultTabController.of(context)!.animateTo(4);
-                print(widget.onChangeScreenNeeded!);
               }
               Navigator.pop(context);
             },

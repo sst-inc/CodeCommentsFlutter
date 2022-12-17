@@ -59,6 +59,16 @@ class _ScaffoldMaterialState extends State<ScaffoldMaterial> {
       if (openSettingsInEditor != null) {
         setState(() {
           openSettingsInEditMode = openSettingsInEditor;
+
+          listOfScreens = [
+            HomePage(outerScaffoldKey: scaffoldKey),
+            ChatsPage(outerScaffoldKey: scaffoldKey),
+            SchedulingView(outerScaffoldKey: scaffoldKey),
+            CoursesPage(outerScaffoldKey: scaffoldKey),
+            SettingsPage(
+                outerScaffoldKey: scaffoldKey,
+                openInEditMode: openSettingsInEditMode)
+          ];
         });
       }
     }
