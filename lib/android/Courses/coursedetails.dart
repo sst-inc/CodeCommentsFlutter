@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../themes.dart';
 
 class CoursePage extends StatefulWidget {

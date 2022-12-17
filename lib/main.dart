@@ -1,11 +1,11 @@
-import 'package:code_comments_flutter/Calendar/scheduling.dart';
-import 'package:code_comments_flutter/Courses/courses.dart';
-import 'package:code_comments_flutter/Messaging/chats.dart';
+import 'package:code_comments_flutter/android/Calendar/scheduling.dart';
+import 'package:code_comments_flutter/android/Courses/courses.dart';
+import 'package:code_comments_flutter/android/Messaging/chats.dart';
 import 'package:flutter/material.dart';
 
-import 'homescreen.dart';
-import 'Settings/settings.dart';
-import 'themes.dart';
+import 'android/Settings/settings.dart';
+import 'android/homescreen.dart';
+import 'android/themes.dart';
 
 void main() {
   runApp(const MyApp());

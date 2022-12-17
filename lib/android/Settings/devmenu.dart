@@ -1,5 +1,5 @@
-import 'package:code_comments_flutter/Login/login.dart';
-import 'package:code_comments_flutter/themes.dart';
+import 'package:code_comments_flutter/android/Login/login.dart';
+import 'package:code_comments_flutter/android/themes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

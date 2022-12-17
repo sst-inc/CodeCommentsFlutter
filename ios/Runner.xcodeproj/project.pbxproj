@@ -14,7 +14,6 @@
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
-		B5621C2FDB72F84DBDA2C075 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3DC521F96F496D036CE59E54 /* GoogleService-Info.plist */; };
 		A8BEEFC8294CAF8000A3AAF7 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A8BEEFB1294CAF7D00A3AAF7 /* icon.png */; };
 		A8BEEFC9294CAF8000A3AAF7 /* icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A8BEEFB2294CAF7D00A3AAF7 /* icon-76@2x.png */; };
 		A8BEEFCA294CAF8000A3AAF7 /* icon-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A8BEEFB3294CAF7D00A3AAF7 /* icon-40@2x.png */; };
@@ -38,6 +37,7 @@
 		A8BEEFDC294CAF8000A3AAF7 /* icon-small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = A8BEEFC5294CAF7D00A3AAF7 /* icon-small-50.png */; };
 		A8BEEFDD294CAF8000A3AAF7 /* ios-marketing.png in Resources */ = {isa = PBXBuildFile; fileRef = A8BEEFC6294CAF7D00A3AAF7 /* ios-marketing.png */; };
 		A8BEEFDE294CAF8000A3AAF7 /* icon-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A8BEEFC7294CAF7D00A3AAF7 /* icon-small@2x.png */; };
+		B5621C2FDB72F84DBDA2C075 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3DC521F96F496D036CE59E54 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */

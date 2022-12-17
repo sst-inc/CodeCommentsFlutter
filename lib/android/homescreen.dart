@@ -1,13 +1,12 @@
-import 'package:code_comments_flutter/Calendar/calendarExamples.dart';
-import 'package:code_comments_flutter/Messaging/chats.dart';
+import 'package:code_comments_flutter/android//Messaging/messages.dart';
+import 'package:code_comments_flutter/android/Calendar/calendarExamples.dart';
+import 'package:code_comments_flutter/android/Messaging/chats.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:intl/intl.dart';
 import 'package:manage_calendar_events/manage_calendar_events.dart';
 import 'package:table_calendar/table_calendar.dart';
-
-import 'Messaging/messages.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});

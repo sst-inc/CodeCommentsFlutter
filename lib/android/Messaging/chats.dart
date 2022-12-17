@@ -1,5 +1,5 @@
-import 'package:code_comments_flutter/Messaging/chatDisplayModel.dart';
-import 'package:code_comments_flutter/Messaging/messages.dart';
+import 'package:code_comments_flutter/android//Messaging/chatDisplayModel.dart';
+import 'package:code_comments_flutter/android//Messaging/messages.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

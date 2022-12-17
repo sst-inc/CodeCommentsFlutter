@@ -1,4 +1,4 @@
-import 'package:code_comments_flutter/Courses/coursedetails.dart';
+import 'package:code_comments_flutter/android//Courses/coursedetails.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

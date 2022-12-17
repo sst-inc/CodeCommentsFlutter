@@ -1,6 +1,5 @@
-import 'package:code_comments_flutter/Calendar/addEventsView.dart';
-import 'package:code_comments_flutter/Calendar/calendarExamples.dart';
-import 'package:code_comments_flutter/Calendar/createNewEvent.dart';
+import 'package:code_comments_flutter/android//Calendar/addEventsView.dart';
+import 'package:code_comments_flutter/android//Calendar/calendarExamples.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:intl/intl.dart';
