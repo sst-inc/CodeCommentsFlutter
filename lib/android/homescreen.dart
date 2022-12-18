@@ -56,11 +56,18 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             children: [
               TableCalendar(
-                calendarStyle: const CalendarStyle(
-                  isTodayHighlighted: true,
-                ),
+                calendarStyle: CalendarStyle(
+                    isTodayHighlighted: true,
+                    selectedDecoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.secondary,
+                        shape: BoxShape.circle),
+                    todayDecoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.background,
+                        shape: BoxShape.circle)),
                 headerStyle: const HeaderStyle(
-                    formatButtonVisible: false, titleCentered: true),
+                  formatButtonVisible: false,
+                  titleCentered: true,
+                ),
                 calendarFormat: CalendarFormat.week,
                 firstDay: DateTime(DateTime.now().year - 10),
                 lastDay: DateTime(DateTime.now().year + 10),

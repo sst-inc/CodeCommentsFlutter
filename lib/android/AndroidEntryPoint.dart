@@ -78,31 +78,32 @@ class _AndroidAppState extends State<AndroidApp> {
             onChangeScreenNeeded: _onItemTapped),
         body: listOfScreens[_selectedIndex],
         bottomNavigationBar: NavigationBar(
-            destinations: const [
-              NavigationDestination(
-                icon: Icon(Icons.home),
-                label: 'Home',
-              ),
-              NavigationDestination(
-                icon: Icon(Icons.messenger),
-                label: 'Chats',
-              ),
-              NavigationDestination(
-                icon: Icon(Icons.calendar_month),
-                label: 'Scheduling',
-              ),
-              NavigationDestination(
-                icon: Icon(Icons.book),
-                label: 'Courses',
-              ),
-              NavigationDestination(
-                icon: Icon(Icons.settings),
-                label: 'Settings',
-              ),
-            ],
-            onDestinationSelected: _onItemTapped,
-            selectedIndex: _selectedIndex,
-            surfaceTintColor: Theme.of(context).primaryColor),
+          destinations: const [
+            NavigationDestination(
+              icon: Icon(Icons.home),
+              label: 'Home',
+            ),
+            NavigationDestination(
+              icon: Icon(Icons.messenger),
+              label: 'Chats',
+            ),
+            NavigationDestination(
+              icon: Icon(Icons.calendar_month),
+              label: 'Scheduling',
+            ),
+            NavigationDestination(
+              icon: Icon(Icons.book),
+              label: 'Courses',
+            ),
+            NavigationDestination(
+              icon: Icon(Icons.settings),
+              label: 'Settings',
+            ),
+          ],
+          onDestinationSelected: _onItemTapped,
+          selectedIndex: _selectedIndex,
+          surfaceTintColor: Theme.of(context).colorScheme.primary,
+        ),
       ),
     );
     ;
