@@ -17,12 +17,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (kIsWeb) {
-      return WebApp(); // The app is running on web
+      return MaterialApp(); // The app is running on web
     } else {
       if (Platform.isAndroid || Platform.isIOS) {
-        return AndroidApp();
+        return const AndroidApp();
+      } else if (Platform.isMacOS) {
+        return const MacOSApp();
       } else {
-        return MaterialApp();
+        return const MaterialApp();
       }
     }
   }

@@ -6,15 +6,15 @@ import 'package:intl/intl.dart';
 import 'package:manage_calendar_events/manage_calendar_events.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-class SchedulingView extends StatefulWidget {
-  SchedulingView({super.key, required this.outerScaffoldKey});
+class SchedulingPage extends StatefulWidget {
+  SchedulingPage({super.key, required this.outerScaffoldKey});
   GlobalKey<ScaffoldState> outerScaffoldKey;
 
   @override
-  State<SchedulingView> createState() => _SchedulingViewState();
+  State<SchedulingPage> createState() => _SchedulingPageState();
 }
 
-class _SchedulingViewState extends State<SchedulingView> {
+class _SchedulingPageState extends State<SchedulingPage> {
   CalendarPlugin plugin = CalendarPlugin();
 
   // Have to do with obtaining all user events frm calendar
@@ -82,7 +82,6 @@ class _SchedulingViewState extends State<SchedulingView> {
               MaterialPageRoute(
                   builder: (context) => CreateNewCalendarEvent()));*/
         },
-        backgroundColor: Theme.of(context).primaryColor,
         child: const Icon(Icons.add),
       ),
       body: SafeArea(
@@ -92,9 +91,14 @@ class _SchedulingViewState extends State<SchedulingView> {
           child: Column(
             children: [
               TableCalendar(
-                calendarStyle: const CalendarStyle(
-                  isTodayHighlighted: true,
-                ),
+                calendarStyle: CalendarStyle(
+                    isTodayHighlighted: true,
+                    selectedDecoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.primary,
+                        shape: BoxShape.circle),
+                    todayDecoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.background,
+                        shape: BoxShape.circle)),
                 // headerStyle: const HeaderStyle(
                 //     formatButtonVisible: false, titleCentered: true),
                 calendarFormat: _calendarFormat,
