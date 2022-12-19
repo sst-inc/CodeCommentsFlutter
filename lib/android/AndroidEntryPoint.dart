@@ -102,7 +102,8 @@ class _AndroidAppState extends State<AndroidApp> {
           ],
           onDestinationSelected: onItemTapped,
           selectedIndex: _selectedIndex,
-          surfaceTintColor: Theme.of(context).colorScheme.primary,
+          // surfaceTintColor: Theme.of(context).primaryColor,
+          // backgroundColor: Theme.of(context).primaryColor,
         ),
       ),
     );

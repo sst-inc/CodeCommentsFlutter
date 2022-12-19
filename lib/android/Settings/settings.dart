@@ -56,7 +56,6 @@ class _SettingsPageState extends State<SettingsPage> {
                 });
               },
               enableFeedback: true,
-              backgroundColor: Theme.of(context).primaryColor,
             )
           : Column(
               mainAxisAlignment: MainAxisAlignment.end,
@@ -76,7 +75,6 @@ class _SettingsPageState extends State<SettingsPage> {
                       });
                     },
                     enableFeedback: true,
-                    backgroundColor: Theme.of(context).primaryColor,
                     child: Icon(Icons.cancel_outlined),
                   ),
                 ),
@@ -103,7 +101,6 @@ class _SettingsPageState extends State<SettingsPage> {
                     });
                   },
                   enableFeedback: true,
-                  backgroundColor: Theme.of(context).primaryColor,
                 )
               ],
             ),

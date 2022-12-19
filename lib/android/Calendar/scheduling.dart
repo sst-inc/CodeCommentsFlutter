@@ -82,7 +82,6 @@ class _SchedulingPageState extends State<SchedulingPage> {
               MaterialPageRoute(
                   builder: (context) => CreateNewCalendarEvent()));*/
         },
-        backgroundColor: Theme.of(context).primaryColor,
         child: const Icon(Icons.add),
       ),
       body: SafeArea(

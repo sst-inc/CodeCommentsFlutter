@@ -149,7 +149,6 @@ class _ChatsPageState extends State<ChatsPage> {
             },
           );
         },
-        backgroundColor: Theme.of(context).primaryColor,
         child: const Icon(Icons.edit),
       ),
       body: SafeArea(
