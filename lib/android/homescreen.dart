@@ -41,13 +41,13 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text("Upcoming Classes"),
+          title: const Text("Upcoming Classes"),
           centerTitle: false,
           leading: MaterialButton(
             onPressed: () {
               widget.outerScaffoldKey.currentState!.openDrawer();
             },
-            child: Icon(Icons.menu),
+            child: const Icon(Icons.menu),
           )),
       body: SafeArea(
         child: Padding(
@@ -59,7 +59,7 @@ class _HomePageState extends State<HomePage> {
                 calendarStyle: CalendarStyle(
                     isTodayHighlighted: true,
                     selectedDecoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.secondary,
+                        color: Theme.of(context).colorScheme.primary,
                         shape: BoxShape.circle),
                     todayDecoration: BoxDecoration(
                         color: Theme.of(context).colorScheme.background,
@@ -115,20 +115,20 @@ class _HomePageState extends State<HomePage> {
               Divider(
                 thickness: 1,
                 color: brightness == Brightness.dark
-                    ? Color.fromRGBO(104, 102, 102, 1.0)
-                    : Color.fromRGBO(77, 75, 75, 1.0),
+                    ? const Color.fromRGBO(104, 102, 102, 1.0)
+                    : const Color.fromRGBO(77, 75, 75, 1.0),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Text(
+              const Text(
                 "Recent Chats",
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Flexible(
@@ -190,7 +190,7 @@ class _HomePageState extends State<HomePage> {
               flex: 20,
               fit: FlexFit.tight,
               child: Padding(
-                padding: EdgeInsets.only(right: 10),
+                padding: const EdgeInsets.only(right: 10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -242,7 +242,7 @@ class _HomePageState extends State<HomePage> {
                   listOfCardWidgets.add(
                     Card(
                       child: Padding(
-                        padding: EdgeInsets.all(5),
+                        padding: const EdgeInsets.all(5),
                         child: ListTile(
                           title: Text(k.title!),
                           trailing: k.isAllDay!

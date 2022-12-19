@@ -37,7 +37,7 @@ class _AndroidAppState extends State<AndroidApp> {
     listOfScreens = [
       HomePage(outerScaffoldKey: scaffoldKey),
       ChatsPage(outerScaffoldKey: scaffoldKey),
-      SchedulingView(outerScaffoldKey: scaffoldKey),
+      SchedulingPage(outerScaffoldKey: scaffoldKey),
       CoursesPage(outerScaffoldKey: scaffoldKey),
       SettingsPage(
           outerScaffoldKey: scaffoldKey, openInEditMode: openSettingsInEditMode)
@@ -46,7 +46,7 @@ class _AndroidAppState extends State<AndroidApp> {
 
   @override
   Widget build(BuildContext context) {
-    void _onItemTapped(int index, [bool? openSettingsInEditor]) {
+    void onItemTapped(int index, [bool? openSettingsInEditor]) {
       setState(() {
         _selectedIndex = index;
       });
@@ -58,7 +58,7 @@ class _AndroidAppState extends State<AndroidApp> {
           listOfScreens = [
             HomePage(outerScaffoldKey: scaffoldKey),
             ChatsPage(outerScaffoldKey: scaffoldKey),
-            SchedulingView(outerScaffoldKey: scaffoldKey),
+            SchedulingPage(outerScaffoldKey: scaffoldKey),
             CoursesPage(outerScaffoldKey: scaffoldKey),
             SettingsPage(
                 outerScaffoldKey: scaffoldKey,
@@ -74,8 +74,8 @@ class _AndroidAppState extends State<AndroidApp> {
       home: Scaffold(
         key: scaffoldKey,
         drawer: DrawerActions(
-            onEditButtonPressed: _onItemTapped,
-            onChangeScreenNeeded: _onItemTapped),
+            onEditButtonPressed: onItemTapped,
+            onChangeScreenNeeded: onItemTapped),
         body: listOfScreens[_selectedIndex],
         bottomNavigationBar: NavigationBar(
           destinations: const [
@@ -100,12 +100,11 @@ class _AndroidAppState extends State<AndroidApp> {
               label: 'Settings',
             ),
           ],
-          onDestinationSelected: _onItemTapped,
+          onDestinationSelected: onItemTapped,
           selectedIndex: _selectedIndex,
           surfaceTintColor: Theme.of(context).colorScheme.primary,
         ),
       ),
     );
-    ;
   }
 }
