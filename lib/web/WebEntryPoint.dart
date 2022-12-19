@@ -1,4 +1,5 @@
 import 'package:code_comments_flutter/android/Miscellaneous/themes.dart';
+import 'package:code_comments_flutter/web/webChats.dart';
 import 'package:code_comments_flutter/web/webHome.dart';
 import 'package:flutter/material.dart';
 
@@ -18,6 +19,7 @@ class _WebAppState extends State<WebApp> {
 
   @override
   Widget build(BuildContext context) {
+    final scaffoldKey = GlobalKey<ScaffoldState>();
     return MaterialApp(
       theme: lightTheme(context),
       darkTheme: darkTheme(context),
@@ -84,7 +86,7 @@ class _WebAppState extends State<WebApp> {
                 ),
               ],
             ),
-            HomeScreen()
+            _selectedIndex == 0 ? HomeScreen() : ChatsPage()
           ],
         ),
       ),
