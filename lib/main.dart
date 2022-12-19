@@ -1,6 +1,7 @@
 import 'dart:io' show Platform;
 
 import 'package:code_comments_flutter/macos/MacOSEntryPoint.dart';
+import 'package:code_comments_flutter/web/WebEntryPoint.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (kIsWeb) {
-      return const MaterialApp(); // The app is running on web
+      return const WebApp(); // The app is running on web
     } else {
       if (Platform.isAndroid || Platform.isIOS) {
         return const AndroidApp();
