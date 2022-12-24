@@ -1,3 +1,4 @@
+import 'package:code_comments_flutter/web/webScheduling.dart';
 import 'package:flutter/material.dart';
 import 'package:code_comments_flutter/android//Messaging/chatDisplayModel.dart';
 import 'package:code_comments_flutter/android//Messaging/messages.dart';
@@ -46,16 +47,12 @@ class _HomeScreenState extends State<HomeScreen> {
         padding: EdgeInsets.all(20),
         child: Row(
           children: [
+            webCalendar(),
             SizedBox(
-              width: MediaQuery.of(context).size.width / 2 - 100,
-              child: Column(
-                children: [
-                  Text(
-                    "Calendar view",
-                    style: TextStyle(fontSize: 30),
-                  ),
-                ],
-              ),
+              width: 30,
+            ),
+            VerticalDivider(
+              thickness: 4,
             ),
             SizedBox(
               width: 30,

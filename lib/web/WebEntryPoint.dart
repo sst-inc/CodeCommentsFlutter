@@ -1,5 +1,5 @@
 import 'package:code_comments_flutter/android/Miscellaneous/themes.dart';
-import 'package:code_comments_flutter/android/Settings/settings.dart';
+import 'package:code_comments_flutter/web/webCourses.dart';
 import 'package:code_comments_flutter/web/webHome.dart';
 import 'package:code_comments_flutter/web/webSettings.dart';
 import 'package:flutter/material.dart';
@@ -28,11 +28,7 @@ class _WebAppState extends State<WebApp> {
         appBar: AppBar(
           title: (_selectedIndex == 0
               ? Text("Home")
-              : (_selectedIndex == 1
-                  ? Text("Scheduling")
-                  : (_selectedIndex == 2
-                      ? Text("Courses")
-                      : Text("Settings")))),
+              : (_selectedIndex == 1 ? Text("Courses") : Text("Settings"))),
         ),
         body: Row(
           children: <Widget>[
@@ -65,25 +61,30 @@ class _WebAppState extends State<WebApp> {
               destinations: const <NavigationRailDestination>[
                 NavigationRailDestination(
                   icon: Icon(Icons.house),
-                  label: Text('Home'),
-                ),
-                NavigationRailDestination(
-                  icon: Icon(Icons.calendar_month),
-                  label: Text('Scheduling'),
+                  label: Text(
+                    'Home',
+                    style: TextStyle(fontSize: 15),
+                  ),
                 ),
                 NavigationRailDestination(
                   icon: Icon(Icons.book),
-                  label: Text('Courses'),
+                  label: Text(
+                    'Courses',
+                    style: TextStyle(fontSize: 15),
+                  ),
                 ),
                 NavigationRailDestination(
                   icon: Icon(Icons.settings),
-                  label: Text('Settings'),
+                  label: Text(
+                    'Settings',
+                    style: TextStyle(fontSize: 15),
+                  ),
                 ),
               ],
             ),
             _selectedIndex == 0
                 ? HomeScreen()
-                : (_selectedIndex == 3 ? WebSettings() : HomeScreen())
+                : (_selectedIndex == 1 ? webCourses() : WebSettings())
           ],
         ),
       ),

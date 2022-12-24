@@ -37,54 +37,68 @@ class _WebSettingsState extends State<WebSettings> {
         child: Padding(
           padding: const EdgeInsets.all(20),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Center(
                 child: Padding(
                   padding: EdgeInsets.only(bottom: 20, right: 40, left: 40),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(150),
-                    child: Image.network(
-                      "https://media-exp1.licdn.com/dms/image/C5603AQHf-tyMIg6VdQ/profile-displayphoto-shrink_800_800/0/1644684573336?e=2147483647&v=beta&t=fBigrt6W2MFOghS9uEY3WaatzuQtmJnr3yY9dSxs4_Y",
-                      height: 250,
-                    ),
+                  child: Column(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(150),
+                        child: Image.network(
+                          "https://media-exp1.licdn.com/dms/image/C5603AQHf-tyMIg6VdQ/profile-displayphoto-shrink_800_800/0/1644684573336?e=2147483647&v=beta&t=fBigrt6W2MFOghS9uEY3WaatzuQtmJnr3yY9dSxs4_Y",
+                          height: 250,
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.all(20),
+                        child: Text(
+                          name,
+                          style: TextStyle(
+                              fontSize: 40, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
+              SizedBox(
+                width: 20,
+              ),
+              VerticalDivider(
+                thickness: 4,
+                color: Colors.grey,
+              ),
               !widget.openInEditMode
-                  ? Column(children: [
-                      // TODO: find a better way to display all of these without looking ugly
-                      Padding(
-                        padding: EdgeInsets.only(top: 10),
-                        child: Text(
-                          "Welcome, ${name}",
-                          style: TextStyle(fontSize: 30),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 10),
-                        child: Text(
-                          "${email}",
-                          style: TextStyle(fontSize: 20),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 10),
-                        child: Text(
-                          bio,
-                          style: TextStyle(fontSize: 20),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 10),
-                        child: Text(
-                          "${occupation} who teaches ${taughtLangs}",
-                          style: TextStyle(fontSize: 20),
-                          textAlign: TextAlign.center,
-                        ),
-                      )
-                    ])
+                  ? Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                          Padding(
+                            padding: EdgeInsets.only(top: 10),
+                            child: Text(
+                              "Email: ${email}",
+                              style: TextStyle(fontSize: 20),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: 10),
+                            child: Text(
+                              bio,
+                              style: TextStyle(fontSize: 20),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: 10),
+                            child: Text(
+                              "Occupation: ${occupation} who teaches ${taughtLangs}",
+                              style: TextStyle(fontSize: 20),
+                              textAlign: TextAlign.center,
+                            ),
+                          )
+                        ])
                   : Column(
                       children: [
                         Padding(
