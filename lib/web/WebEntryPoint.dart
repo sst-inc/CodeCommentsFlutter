@@ -1,6 +1,7 @@
 import 'package:code_comments_flutter/android/Miscellaneous/themes.dart';
-import 'package:code_comments_flutter/web/webChats.dart';
+import 'package:code_comments_flutter/android/Settings/settings.dart';
 import 'package:code_comments_flutter/web/webHome.dart';
+import 'package:code_comments_flutter/web/webSettings.dart';
 import 'package:flutter/material.dart';
 
 class WebApp extends StatefulWidget {
@@ -28,12 +29,10 @@ class _WebAppState extends State<WebApp> {
           title: (_selectedIndex == 0
               ? Text("Home")
               : (_selectedIndex == 1
-                  ? Text("Chats")
+                  ? Text("Scheduling")
                   : (_selectedIndex == 2
-                      ? Text("Scheduling")
-                      : (_selectedIndex == 3
-                          ? Text("Courses")
-                          : Text("Settings"))))),
+                      ? Text("Courses")
+                      : Text("Settings")))),
         ),
         body: Row(
           children: <Widget>[
@@ -69,10 +68,6 @@ class _WebAppState extends State<WebApp> {
                   label: Text('Home'),
                 ),
                 NavigationRailDestination(
-                  icon: Icon(Icons.chat),
-                  label: Text('Chats'),
-                ),
-                NavigationRailDestination(
                   icon: Icon(Icons.calendar_month),
                   label: Text('Scheduling'),
                 ),
@@ -86,7 +81,9 @@ class _WebAppState extends State<WebApp> {
                 ),
               ],
             ),
-            _selectedIndex == 0 ? HomeScreen() : ChatsPage()
+            _selectedIndex == 0
+                ? HomeScreen()
+                : (_selectedIndex == 3 ? WebSettings() : HomeScreen())
           ],
         ),
       ),
