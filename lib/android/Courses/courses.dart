@@ -18,7 +18,7 @@ class _CoursesPageState extends State<CoursesPage> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-          floatingActionButton: chosenTab == 0
+          floatingActionButton: chosenTab == 1
               ? FloatingActionButton.extended(
                   onPressed: () {},
                   icon: Icon(Icons.add),
@@ -26,7 +26,7 @@ class _CoursesPageState extends State<CoursesPage> {
               : FloatingActionButton.extended(
                   onPressed: () {}, label: Text("New"), icon: Icon(Icons.edit)),
           appBar: AppBar(
-              title: Text("Currently Enrolled"),
+              title: Text("Courses"),
               centerTitle: false,
               bottom: TabBar(
                   tabs: const [
