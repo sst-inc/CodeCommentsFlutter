@@ -32,11 +32,11 @@ class _webCalendarState extends State<webCalendar> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Padding(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(10),
         child: Column(
           children: [
             SizedBox(
-              height: MediaQuery.of(context).size.height / 2,
+              height: (MediaQuery.of(context).size.height / 2) + 100,
               width: (MediaQuery.of(context).size.width - 350) / 2,
               child: TableCalendar(
                 calendarStyle: CalendarStyle(

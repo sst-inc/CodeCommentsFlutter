@@ -5,7 +5,6 @@ import 'package:code_comments_flutter/android/Miscellaneous/HamburgerMenu.dart';
 import 'package:code_comments_flutter/android/Miscellaneous/themes.dart';
 import 'package:code_comments_flutter/android/Settings/settings.dart';
 import 'package:code_comments_flutter/android/homescreen.dart';
-import 'package:code_comments_flutter/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -25,14 +24,6 @@ class _AndroidAppState extends State<AndroidApp> {
   @override
   void initState() {
     super.initState();
-
-    Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
-    ).then((value) {
-      print(value);
-    }).onError((error, stackTrace) {
-      print("Firebase failed!");
-    });
 
     listOfScreens = [
       HomePage(outerScaffoldKey: scaffoldKey),

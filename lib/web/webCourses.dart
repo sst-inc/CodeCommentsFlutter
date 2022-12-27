@@ -44,7 +44,7 @@ class _webCoursesState extends State<webCourses> {
                                   builder: (context) => CoursePage()));
                             },
                           ),
-                      itemCount: 5)
+                      itemCount: 4)
                 ],
               ),
             ),
@@ -74,7 +74,7 @@ class _webCoursesState extends State<webCourses> {
                                   builder: (context) => CoursePage()));
                             },
                           ),
-                      itemCount: 5)
+                      itemCount: 4)
                 ],
               ),
             ),

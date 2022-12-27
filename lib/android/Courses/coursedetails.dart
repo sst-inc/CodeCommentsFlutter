@@ -109,7 +109,7 @@ class _CoursePageState extends State<CoursePage> {
                         const Divider(
                           color: Colors.black,
                         ),
-                    itemCount: 4)
+                    itemCount: 3)
               ],
             ),
           ),
