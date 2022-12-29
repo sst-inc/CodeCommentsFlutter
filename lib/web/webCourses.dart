@@ -74,7 +74,30 @@ class _webCoursesState extends State<webCourses> {
                                   builder: (context) => CoursePage()));
                             },
                           ),
-                      itemCount: 4)
+                      itemCount: 4),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {},
+                    child: Padding(
+                      padding: EdgeInsets.all(10),
+                      child: Center(
+                        child: Row(
+                          children: [
+                            SizedBox(
+                              width: 100,
+                            ),
+                            Icon(Icons.add),
+                            Text(" Create new course"),
+                            SizedBox(
+                              width: 100,
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  )
                 ],
               ),
             ),

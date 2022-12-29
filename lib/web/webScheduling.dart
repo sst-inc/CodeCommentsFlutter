@@ -35,6 +35,24 @@ class _webCalendarState extends State<webCalendar> {
         padding: const EdgeInsets.all(10),
         child: Column(
           children: [
+            ElevatedButton(
+              onPressed: () {},
+              child: Padding(
+                padding: EdgeInsets.all(10),
+                child: Row(
+                  children: [
+                    SizedBox(
+                      width: 60,
+                    ),
+                    Icon(Icons.add),
+                    Text("Add event"),
+                    SizedBox(
+                      width: 60,
+                    )
+                  ],
+                ),
+              ),
+            ),
             SizedBox(
               height: (MediaQuery.of(context).size.height / 2) + 100,
               width: (MediaQuery.of(context).size.width - 350) / 2,
