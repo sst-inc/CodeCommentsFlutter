@@ -76,20 +76,23 @@ class _webCoursesState extends State<webCourses> {
                           ),
                       itemCount: 4),
                   SizedBox(
-                    height: 30,
+                    height: 15,
                   ),
                   ElevatedButton(
                     onPressed: () {},
                     child: Padding(
-                      padding: EdgeInsets.all(10),
+                      padding: EdgeInsets.fromLTRB(10, 20, 10, 20),
                       child: Center(
                         child: Row(
                           children: [
                             SizedBox(
-                              width: 100,
+                              width: 180,
                             ),
                             Icon(Icons.add),
-                            Text(" Create new course"),
+                            Text(
+                              " Create new course",
+                              style: TextStyle(fontSize: 20),
+                            ),
                             SizedBox(
                               width: 100,
                             )
