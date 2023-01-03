@@ -100,7 +100,18 @@ class _webCalendarState extends State<webCalendar> {
               height: 150,
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                showModalBottomSheet(
+                    context: context,
+                    builder: (context) {
+                      return SafeArea(
+                        child: Padding(
+                          padding: EdgeInsets.all(20),
+                          child: AddEventsView(),
+                        ),
+                      );
+                    });
+              },
               child: Padding(
                 padding: EdgeInsets.all(10),
                 child: Row(

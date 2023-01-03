@@ -139,8 +139,22 @@ class _AddEventsViewState extends State<AddEventsView> {
                         });
                       },
                     ),
-                  )
+                  ),
                 ],
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              ElevatedButton.icon(
+                onPressed: () {},
+                icon: Icon(Icons.add),
+                label: Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Text(
+                    "Add",
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ),
               ),
             ],
           ),

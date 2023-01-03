@@ -76,12 +76,19 @@ class _webCoursesState extends State<webCourses> {
                           ),
                       itemCount: 4),
                   SizedBox(
-                    height: 15,
+                    height: 10,
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      showModalBottomSheet(
+                        context: context,
+                        builder: (context) {
+                          return Container();
+                        },
+                      );
+                    },
                     child: Padding(
-                      padding: EdgeInsets.fromLTRB(10, 20, 10, 20),
+                      padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
                       child: Center(
                         child: Row(
                           children: [
@@ -91,7 +98,7 @@ class _webCoursesState extends State<webCourses> {
                             Icon(Icons.add),
                             Text(
                               " Create new course",
-                              style: TextStyle(fontSize: 20),
+                              style: TextStyle(fontSize: 18),
                             ),
                             SizedBox(
                               width: 100,

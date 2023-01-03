@@ -44,6 +44,7 @@ class _WebSettingsState extends State<WebSettings> {
                 child: Padding(
                   padding: EdgeInsets.only(bottom: 20, right: 40, left: 40),
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       ClipRRect(
                         borderRadius: BorderRadius.circular(150),
@@ -60,6 +61,19 @@ class _WebSettingsState extends State<WebSettings> {
                               fontSize: 40, fontWeight: FontWeight.bold),
                         ),
                       ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: Padding(
+                          padding: EdgeInsets.all(10),
+                          child: Text(
+                            "Log Out",
+                            style: TextStyle(color: Colors.red, fontSize: 20),
+                          ),
+                        ),
+                      )
                     ],
                   ),
                 ),
