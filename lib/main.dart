@@ -16,12 +16,36 @@ var isLoggedIn = false;
 void main() async {
   final prefs = await SharedPreferences.getInstance();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  final auth = FirebaseAuth.instanceFor(
+      app: Firebase.app(), persistence: Persistence.LOCAL);
+  await auth.setPersistence(Persistence.LOCAL);
+  runApp(const MyApp());
+  FirebaseAuth.instance.authStateChanges().listen((User? user) {
+    if (user == null) {
+      print('User is currently signed out!');
+    } else {
+      print('User is signed in!');
+    }
+  });
   FirebaseAuth.instance.authStateChanges().listen((User? user) {
     if (user != null) {
       print(user.uid);
     }
   });
-  runApp(const MyApp());
+  FirebaseAuth.instance.idTokenChanges().listen((User? user) {
+    if (user == null) {
+      print('User is currently signed out!');
+    } else {
+      print('User is signed in!');
+    }
+  });
+  FirebaseAuth.instance.userChanges().listen((User? user) {
+    if (user == null) {
+      print('User is currently signed out!');
+    } else {
+      print('User is signed in!');
+    }
+  });
 }
 
 class MyApp extends StatelessWidget {

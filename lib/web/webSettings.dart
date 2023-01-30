@@ -1,3 +1,6 @@
+import 'package:code_comments_flutter/web/WebEntryPoint.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -65,7 +68,14 @@ class _WebSettingsState extends State<WebSettings> {
                         height: 20,
                       ),
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () async {
+                          var navigator = Navigator.of(context);
+                          await FirebaseAuth.instance.signOut();
+                          print("signed out");
+                          navigator.pushReplacement(CupertinoPageRoute(
+                            builder: (context) => WebApp(isLoggedIn: false),
+                          ));
+                        },
                         child: Padding(
                           padding: EdgeInsets.all(10),
                           child: Text(

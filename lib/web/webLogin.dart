@@ -115,9 +115,15 @@ class _WebLoginScreenState extends State<WebLoginScreen> {
                 child: Row(
                   children: [
                     SizedBox(
-                      width: 140,
+                      width: 600,
                     ),
-                    Text("Log In"),
+                    Padding(
+                      padding: EdgeInsets.all(10),
+                      child: Text(
+                        "Log In",
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ),
                     SizedBox(
                       width: 50,
                     )
