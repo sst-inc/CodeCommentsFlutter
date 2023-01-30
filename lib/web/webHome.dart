@@ -1,9 +1,10 @@
+import 'package:code_comments_flutter/android/Miscellaneous/themes.dart';
 import 'package:code_comments_flutter/web/webScheduling.dart';
 import 'package:flutter/material.dart';
 import 'package:code_comments_flutter/android//Messaging/chatDisplayModel.dart';
 import 'package:code_comments_flutter/android//Messaging/messages.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 var conversations = [
   ChatDisplayView(
@@ -42,51 +43,59 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Padding(
-        padding: EdgeInsets.all(20),
-        child: Row(
-          children: [
-            webCalendar(),
-            SizedBox(
-              width: 30,
-            ),
-            VerticalDivider(
-              thickness: 4,
-            ),
-            SizedBox(
-              width: 30,
-            ),
-            Column(
+    return MaterialApp(
+      theme: lightTheme(context),
+      darkTheme: darkTheme(context),
+      home: Scaffold(
+        appBar: AppBar(),
+        body: SafeArea(
+          child: Padding(
+            padding: EdgeInsets.all(20),
+            child: Row(
               children: [
+                webCalendar(),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width / 2 - 100,
-                  child: ListView.separated(
-                      shrinkWrap: true,
-                      scrollDirection: Axis.vertical,
-                      itemBuilder: (BuildContext context, int index) => InkWell(
-                            child: Card(child: chatsDataView(index)),
-                            onTap: () {
-                              var navigator = Navigator.of(context);
-                              navigator.push(
-                                CupertinoPageRoute(
-                                  builder: (context) => ChatsInterface(
-                                    nameOfPerson:
-                                        conversations[index].senderName,
-                                    pfpImageUrl:
-                                        conversations[index].senderPfpUrl,
-                                  ),
-                                ),
-                              );
-                            },
-                          ),
-                      separatorBuilder: (BuildContext context, int index) =>
-                          Container(),
-                      itemCount: conversations.length),
+                  width: 30,
+                ),
+                VerticalDivider(
+                  thickness: 4,
+                ),
+                SizedBox(
+                  width: 30,
+                ),
+                Column(
+                  children: [
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width / 2 - 100,
+                      child: ListView.separated(
+                          shrinkWrap: true,
+                          scrollDirection: Axis.vertical,
+                          itemBuilder: (BuildContext context, int index) =>
+                              InkWell(
+                                child: Card(child: chatsDataView(index)),
+                                onTap: () {
+                                  var navigator = Navigator.of(context);
+                                  navigator.push(
+                                    CupertinoPageRoute(
+                                      builder: (context) => ChatsInterface(
+                                        nameOfPerson:
+                                            conversations[index].senderName,
+                                        pfpImageUrl:
+                                            conversations[index].senderPfpUrl,
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
+                          separatorBuilder: (BuildContext context, int index) =>
+                              Container(),
+                          itemCount: conversations.length),
+                    )
+                  ],
                 )
               ],
-            )
-          ],
+            ),
+          ),
         ),
       ),
     );
