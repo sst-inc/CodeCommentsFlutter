@@ -15,11 +15,14 @@ var isLoggedIn = false;
 
 void main() async {
   final prefs = await SharedPreferences.getInstance();
+
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  final auth = FirebaseAuth.instanceFor(
-      app: Firebase.app(), persistence: Persistence.LOCAL);
-  await auth.setPersistence(Persistence.LOCAL);
   runApp(const MyApp());
+  if (FirebaseAuth.instance.currentUser != null) {
+    print(FirebaseAuth.instance.currentUser?.uid);
+  } else {
+    print("user not detected");
+  }
   FirebaseAuth.instance.authStateChanges().listen((User? user) {
     if (user == null) {
       print('User is currently signed out!');

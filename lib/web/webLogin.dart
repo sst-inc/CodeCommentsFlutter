@@ -91,10 +91,12 @@ class _WebLoginScreenState extends State<WebLoginScreen> {
               ElevatedButton(
                 onPressed: () async {
                   try {
+                    // attempts to sign in
                     final credential = await FirebaseAuth.instance
                         .signInWithEmailAndPassword(
                             email: emailController.text,
                             password: passwordController.text);
+                    print("successfully signed in");
                   } on FirebaseAuthException catch (e) {
                     if (e.code == 'user-not-found') {
                       print('No user found for that email.');
@@ -102,7 +104,6 @@ class _WebLoginScreenState extends State<WebLoginScreen> {
                       print('Wrong password provided for that user.');
                     }
                   }
-                  print("successfully signed in");
                   var navigator = Navigator.of(context);
                   navigator.pushReplacement(
                     CupertinoPageRoute(
@@ -115,7 +116,7 @@ class _WebLoginScreenState extends State<WebLoginScreen> {
                 child: Row(
                   children: [
                     SizedBox(
-                      width: 600,
+                      width: 500,
                     ),
                     Padding(
                       padding: EdgeInsets.all(10),

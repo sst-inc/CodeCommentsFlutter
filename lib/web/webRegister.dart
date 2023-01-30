@@ -96,6 +96,7 @@ class _WebRegisterState extends State<WebRegister> {
                 ),
                 ElevatedButton(
                   onPressed: () async {
+                    //start register sequence
                     var navigator = Navigator.of(context);
                     print("initialising login attempt");
                     if (emailController.text == "" ||
