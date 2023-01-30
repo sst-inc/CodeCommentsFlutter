@@ -4,6 +4,7 @@ import 'package:code_comments_flutter/web/webRegister.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:restart_app/restart_app.dart';
 
 import '../android/Login/register.dart';
 import '../main.dart';
@@ -105,7 +106,9 @@ class _WebLoginScreenState extends State<WebLoginScreen> {
                   var navigator = Navigator.of(context);
                   navigator.pushReplacement(
                     CupertinoPageRoute(
-                      builder: ((context) => MyApp()),
+                      builder: ((context) => WebApp(
+                            isLoggedIn: true,
+                          )),
                     ),
                   );
                 },

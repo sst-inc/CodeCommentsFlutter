@@ -43,59 +43,51 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: lightTheme(context),
-      darkTheme: darkTheme(context),
-      home: Scaffold(
-        appBar: AppBar(),
-        body: SafeArea(
-          child: Padding(
-            padding: EdgeInsets.all(20),
-            child: Row(
+    return SafeArea(
+      child: Padding(
+        padding: EdgeInsets.all(20),
+        child: Row(
+          children: [
+            webCalendar(),
+            SizedBox(
+              width: 30,
+            ),
+            VerticalDivider(
+              thickness: 4,
+            ),
+            SizedBox(
+              width: 30,
+            ),
+            Column(
               children: [
-                webCalendar(),
                 SizedBox(
-                  width: 30,
-                ),
-                VerticalDivider(
-                  thickness: 4,
-                ),
-                SizedBox(
-                  width: 30,
-                ),
-                Column(
-                  children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width / 2 - 100,
-                      child: ListView.separated(
-                          shrinkWrap: true,
-                          scrollDirection: Axis.vertical,
-                          itemBuilder: (BuildContext context, int index) =>
-                              InkWell(
-                                child: Card(child: chatsDataView(index)),
-                                onTap: () {
-                                  var navigator = Navigator.of(context);
-                                  navigator.push(
-                                    CupertinoPageRoute(
-                                      builder: (context) => ChatsInterface(
-                                        nameOfPerson:
-                                            conversations[index].senderName,
-                                        pfpImageUrl:
-                                            conversations[index].senderPfpUrl,
-                                      ),
-                                    ),
-                                  );
-                                },
-                              ),
-                          separatorBuilder: (BuildContext context, int index) =>
-                              Container(),
-                          itemCount: conversations.length),
-                    )
-                  ],
+                  width: MediaQuery.of(context).size.width / 2 - 100,
+                  child: ListView.separated(
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      itemBuilder: (BuildContext context, int index) => InkWell(
+                            child: Card(child: chatsDataView(index)),
+                            onTap: () {
+                              var navigator = Navigator.of(context);
+                              navigator.push(
+                                CupertinoPageRoute(
+                                  builder: (context) => ChatsInterface(
+                                    nameOfPerson:
+                                        conversations[index].senderName,
+                                    pfpImageUrl:
+                                        conversations[index].senderPfpUrl,
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                      separatorBuilder: (BuildContext context, int index) =>
+                          Container(),
+                      itemCount: conversations.length),
                 )
               ],
-            ),
-          ),
+            )
+          ],
         ),
       ),
     );
